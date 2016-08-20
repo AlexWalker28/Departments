@@ -3,8 +3,11 @@ package com.example.alexw.departments;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.MultiAutoCompleteTextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -19,6 +22,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     private Button hybridViewBtn;
     private Button normalViewBtn;
+    private AutoCompleteTextView autoCompleteTextView;
+    private EditText editText;
+
     View.OnClickListener btnTestListener;
     GoogleMap.OnMapClickListener onMapClickListener;
     GoogleMap.OnMarkerClickListener onMarkerClickListener;
@@ -35,7 +41,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         hybridViewBtn = (Button) findViewById(R.id.hybridViewBtn);
         normalViewBtn = (Button) findViewById(R.id.normalViewBtn);
-        findDepartment = (EditText)findViewById(R.id.findDepartment);
+
+
+
+        editText = (EditText)findViewById(R.id.editText);
+        editText.setText(Constants.PATHOPHYSIOLOGY);
+
         btnTestListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,8 +63,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         };
         hybridViewBtn.setOnClickListener(btnTestListener);
         normalViewBtn.setOnClickListener(btnTestListener);
-
-        findDepartment.getText().toString(); //TODO
 
 
     }
@@ -79,7 +88,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         onMapClickListener = new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
-               mMap.addMarker(new MarkerOptions().position(latLng).title("My marker"));
+                mMap.addMarker(new MarkerOptions().position(latLng).title("My marker"));
             }
         };
 
@@ -100,5 +109,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mortuary, 17));
 
 
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, Constants.DEPARTMENTS);
+        autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
+        autoCompleteTextView.setAdapter(adapter);
+        autoCompleteTextView.setThreshold(1);
+
+
+
+
+
+
     }
+
+
 }

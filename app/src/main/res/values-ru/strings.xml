@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Кафедры</string>
+    <string name="pathological_physiology">Патологическая физиология</string>
+    <string name="departments">Найти кафедру</string>
+    <string name="normal">улицы</string>
+    <string name="hybrid">гибрид</string>
+</resources>
