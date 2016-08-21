@@ -2,12 +2,16 @@ package com.example.alexw.departments;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.MultiAutoCompleteTextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -43,8 +47,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         normalViewBtn = (Button) findViewById(R.id.normalViewBtn);
 
 
-
-        editText = (EditText)findViewById(R.id.editText);
+        editText = (EditText) findViewById(R.id.editText);
         editText.setText(Constants.PATHOPHYSIOLOGY);
 
         btnTestListener = new View.OnClickListener() {
@@ -53,6 +56,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 switch (view.getId()) {
                     case R.id.hybridViewBtn:
                         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                        //Toast.makeText(MapsActivity.this,R.string.hybrid, Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.normalViewBtn:
                         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
@@ -65,10 +69,31 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         normalViewBtn.setOnClickListener(btnTestListener);
 
 
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, Constants.DEPARTMENTS);
+        autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
+        autoCompleteTextView.setAdapter(adapter);
+        autoCompleteTextView.setThreshold(1);
+        registerForContextMenu(autoCompleteTextView);
+    }
+        final int MENU_DEPARTMENT_PHYSIOLOGY = 1;
+        final int MENU_DEPARTMENT_PATHOPHYSIOLOGY = 2;
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+       // super.onCreateContextMenu(menu, v, menuInfo);
 
 
+                menu.add(0, MENU_DEPARTMENT_PHYSIOLOGY, 0, R.string.physiology);
+                menu.add(0, MENU_DEPARTMENT_PATHOPHYSIOLOGY, 0, R.string.pathological_physiology);
     }
 
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        if(item.getItemId() == MENU_DEPARTMENT_PHYSIOLOGY){
+            autoCompleteTextView.setText(R.string.physiology);
+
+        }else autoCompleteTextView.setText(R.string.pathological_physiology);
+        return super.onContextItemSelected(item);
+    }
 
     /**
      * Manipulates the map once available.
@@ -111,17 +136,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mortuary, 17));
 
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, Constants.DEPARTMENTS);
-        autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
-        autoCompleteTextView.setAdapter(adapter);
-        autoCompleteTextView.setThreshold(1);
-
-
-
 
 
 
     }
+
+
+
+
+
+
 
 
 }

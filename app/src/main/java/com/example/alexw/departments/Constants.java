@@ -15,7 +15,7 @@ public class Constants {
     };
 
     /*String[] departments = getResources().getStringArray(R.array.list_of_deparments);
-    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.);*/
+    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.simple_dropdown_item_1line.departments);*/
 
 
 }

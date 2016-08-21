@@ -14,19 +14,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/editText"
             android:layout_column="0"
-            android:layout_span="3" />
-    </TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <AutoCompleteTextView
-            android:layout_width="225dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/autoCompleteTextView"
-            android:layout_column="0"
-            android:hint="@string/departments"/>
+            android:layout_weight="2" />
 
         <Button
             android:id="@+id/hybridViewBtn"
@@ -43,6 +31,18 @@
             android:id="@+id/normalViewBtn"
             android:layout_column="2" />
     </TableRow>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <AutoCompleteTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/autoCompleteTextView"
+            android:hint="@string/departments"/>
+
+    </LinearLayout>
 
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
