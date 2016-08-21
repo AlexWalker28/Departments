@@ -28,7 +28,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     View.OnClickListener btnTestListener;
     GoogleMap.OnMapClickListener onMapClickListener;
     GoogleMap.OnMarkerClickListener onMarkerClickListener;
-    EditText findDepartment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +63,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         };
         hybridViewBtn.setOnClickListener(btnTestListener);
         normalViewBtn.setOnClickListener(btnTestListener);
+
+
 
 
     }
