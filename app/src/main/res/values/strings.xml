@@ -2,7 +2,7 @@
     <string name="app_name">Departments</string>
     <string name="title_activity_maps">Map</string>
     <string name="pathological_physiology">Pathological physiology</string>
-    <string name="departments">Find department (long tap for whole list)</string>
+    <string name="departments">Find department (hold for whole list)</string>
     <string name="hybrid">hybrid</string>
     <string name="normal">normal</string>
     <string name="physiology">Physiology</string>

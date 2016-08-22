@@ -1,5 +1,6 @@
 package com.example.alexw.departments;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -26,6 +27,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     private Button hybridViewBtn;
     private Button normalViewBtn;
+    private Button infoButton;
     private AutoCompleteTextView autoCompleteTextView;
     private EditText editText;
 
@@ -45,6 +47,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         hybridViewBtn = (Button) findViewById(R.id.hybridViewBtn);
         normalViewBtn = (Button) findViewById(R.id.normalViewBtn);
+        infoButton = (Button)findViewById(R.id.infoButton);
 
 
         editText = (EditText) findViewById(R.id.editText);
@@ -61,12 +64,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     case R.id.normalViewBtn:
                         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
                         break;
+                    case R.id.infoButton:
+                        Intent intent = new Intent(MapsActivity.this, Info.class);
+                        startActivity(intent);
                 }
 
             }
         };
         hybridViewBtn.setOnClickListener(btnTestListener);
         normalViewBtn.setOnClickListener(btnTestListener);
+        infoButton.setOnClickListener(btnTestListener);
 
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, Constants.DEPARTMENTS);
@@ -127,6 +134,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         };
 
+
         mMap.setOnMapClickListener(onMapClickListener);
         mMap.setOnMarkerClickListener(onMarkerClickListener);
 
@@ -136,15 +144,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mortuary, 17));
 
 
-
-
-
     }
-
-
-
-
-
 
 
 

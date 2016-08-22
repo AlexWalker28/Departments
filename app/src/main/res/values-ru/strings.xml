@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Кафедры</string>
     <string name="pathological_physiology">Патологическая физиология</string>
-    <string name="departments">Найти кафедру (долгое нажатие для полного списка)</string>
+    <string name="departments">Найти кафедру (зажать для полного списка)</string>
     <string name="normal">улицы</string>
     <string name="hybrid">гибрид</string>
     <string name="physiology">Нормальная физиология</string>
