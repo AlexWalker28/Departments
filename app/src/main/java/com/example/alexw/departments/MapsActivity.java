@@ -12,6 +12,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.MultiAutoCompleteTextView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -29,7 +30,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Button normalViewBtn;
     private Button infoButton;
     private AutoCompleteTextView autoCompleteTextView;
-    private EditText editText;
+   // private TextView textView;
 
     View.OnClickListener btnTestListener;
     GoogleMap.OnMapClickListener onMapClickListener;
@@ -49,9 +50,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         normalViewBtn = (Button) findViewById(R.id.normalViewBtn);
         infoButton = (Button)findViewById(R.id.infoButton);
 
+       // textView = (TextView)findViewById(R.id.textView);
 
-        editText = (EditText) findViewById(R.id.editText);
-        editText.setText(Constants.PATHOPHYSIOLOGY);
+
+
+
 
         btnTestListener = new View.OnClickListener() {
             @Override
