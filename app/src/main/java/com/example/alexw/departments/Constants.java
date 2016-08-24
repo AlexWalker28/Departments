@@ -16,12 +16,15 @@ public class Constants {
 
 
     public static final String[] DEPARTMENTS = new String[]{
-            "Physiology",
+            ,
             "Pathophysiology",
             "Физиология",
             "Патологическая физиология"
 
+
     };
+
+
 
     /*String[] departments = getResources().getStringArray(R.array.list_of_deparments);
     ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.simple_dropdown_item_1line.departments);*/

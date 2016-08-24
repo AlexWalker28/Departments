@@ -76,6 +76,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         normalViewBtn.setOnClickListener(btnTestListener);
         infoButton.setOnClickListener(btnTestListener);
 
+        Department physiology = new Department(getString(R.string.physiology),"42.842406", "74.607076");
+
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, Constants.DEPARTMENTS);
         autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
@@ -98,10 +100,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 switch (i) {
-                    case 0:
+                    case 0 :
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.PHYSIOLOGY_COORDINATES, 17));
                         break;
-                    case 1:
+                    case MENU_DEPARTMENT_PHYSIOLOGY:
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.PATHOPHYSILOGY_COORDINATES, 17));
                         break;
 
