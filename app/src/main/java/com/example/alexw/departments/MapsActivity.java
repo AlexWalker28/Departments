@@ -7,6 +7,7 @@ import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -30,7 +31,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Button normalViewBtn;
     private Button infoButton;
     private AutoCompleteTextView autoCompleteTextView;
-   // private TextView textView;
+    // private TextView textView;
 
     View.OnClickListener btnTestListener;
     GoogleMap.OnMapClickListener onMapClickListener;
@@ -48,12 +49,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         hybridViewBtn = (Button) findViewById(R.id.hybridViewBtn);
         normalViewBtn = (Button) findViewById(R.id.normalViewBtn);
-        infoButton = (Button)findViewById(R.id.infoButton);
+        infoButton = (Button) findViewById(R.id.infoButton);
 
-       // textView = (TextView)findViewById(R.id.textView);
-
-
-
+        // textView = (TextView)findViewById(R.id.textView);
 
 
         btnTestListener = new View.OnClickListener() {
@@ -82,26 +80,61 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, Constants.DEPARTMENTS);
         autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
         autoCompleteTextView.setAdapter(adapter);
+
         autoCompleteTextView.setThreshold(1);
         registerForContextMenu(autoCompleteTextView);
+
+        /*AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                switch (adapterView.getId()){
+                    case MENU_DEPARTMENT_PATHOPHYSIOLOGY:
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.PATHOPHYSILOGY_COORDINATES, 17));
+                        break;
+                }
+            }
+        };*/
+        autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                switch (i) {
+                    case 0:
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.PHYSIOLOGY_COORDINATES, 17));
+                        break;
+                    case 1:
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.PATHOPHYSILOGY_COORDINATES, 17));
+                        break;
+
+                }
+            }
+        });
+
     }
-        final int MENU_DEPARTMENT_PHYSIOLOGY = 1;
-        final int MENU_DEPARTMENT_PATHOPHYSIOLOGY = 2;
+
+    final int MENU_DEPARTMENT_PHYSIOLOGY = 1;
+    final int MENU_DEPARTMENT_PATHOPHYSIOLOGY = 2;
+
+
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-       // super.onCreateContextMenu(menu, v, menuInfo);
+        super.onCreateContextMenu(menu, v, menuInfo);
 
-
-                menu.add(0, MENU_DEPARTMENT_PHYSIOLOGY, 0, R.string.physiology);
-                menu.add(0, MENU_DEPARTMENT_PATHOPHYSIOLOGY, 0, R.string.pathological_physiology);
+        menu.add(0, MENU_DEPARTMENT_PHYSIOLOGY, 0, R.string.physiology);
+        menu.add(0, MENU_DEPARTMENT_PATHOPHYSIOLOGY, 0, R.string.pathological_physiology);
     }
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        if(item.getItemId() == MENU_DEPARTMENT_PHYSIOLOGY){
-            autoCompleteTextView.setText(R.string.physiology);
+        switch (item.getItemId()) {
+            case MENU_DEPARTMENT_PHYSIOLOGY:
+                autoCompleteTextView.setText(R.string.physiology);
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.PHYSIOLOGY_COORDINATES, 17));
+                break;
+            case MENU_DEPARTMENT_PATHOPHYSIOLOGY:
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.PATHOPHYSILOGY_COORDINATES, 17));
+                break;
 
-        }else autoCompleteTextView.setText(R.string.pathological_physiology);
+        }
         return super.onContextItemSelected(item);
     }
 
@@ -125,14 +158,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         onMapClickListener = new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
-                mMap.addMarker(new MarkerOptions().position(latLng).title("My marker"));
+                // mMap.addMarker(new MarkerOptions().position(latLng).title("My marker"));
             }
         };
 
         onMarkerClickListener = new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-                marker.remove();
+
                 return false;
             }
         };
@@ -142,13 +175,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setOnMarkerClickListener(onMarkerClickListener);
 
 
-        LatLng mortuary = new LatLng(42.8384125, 74.6065013);
-        mMap.addMarker(new MarkerOptions().position(mortuary).title("Mortuary"));
+        LatLng mortuary = Constants.PATHOPHYSILOGY_COORDINATES;
+        mMap.addMarker(new MarkerOptions().position(mortuary).title(getString(R.string.mortuary_title)));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mortuary, 17));
+
+        LatLng physiology = Constants.PHYSIOLOGY_COORDINATES;
+        mMap.addMarker(new MarkerOptions().position(physiology).title(getString(R.string.physiology)));
 
 
     }
-
 
 
 }

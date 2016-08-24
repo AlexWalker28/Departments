@@ -9,4 +9,6 @@
     <string name="infoButton">Info</string>
     <string name="mapType">Map\'s type</string>
     <string name="top_text_view">KSMA\'s departments</string>
+    <string name="mortuary_departments">Mortuary departments</string>
+    <string name="mortuary_title">Mortuary</string>
 </resources>
