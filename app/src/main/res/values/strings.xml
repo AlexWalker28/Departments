@@ -6,7 +6,7 @@
     <string name="hybrid">hybrid</string>
     <string name="normal">normal</string>
     <string name="physiology">Physiology</string>
-    <string name="infoButton">Info</string>
+    <string name="cleanButton">Clean</string>
     <string name="mapType">Map\'s type</string>
     <string name="top_text_view">KSMA\'s departments</string>
     <string name="mortuary_title">Mortuary</string>

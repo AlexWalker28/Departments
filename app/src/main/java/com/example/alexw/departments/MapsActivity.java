@@ -57,8 +57,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
                         break;
                     case R.id.infoButton:
-                        Intent intent = new Intent(MapsActivity.this, Info.class);
-                        startActivity(intent);
+                        autoCompleteTextView.setText("");
                         break;
                 }
 

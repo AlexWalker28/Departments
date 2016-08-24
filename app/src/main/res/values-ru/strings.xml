@@ -6,7 +6,7 @@
     <string name="normal">улицы</string>
     <string name="hybrid">гибрид</string>
     <string name="physiology">Нормальная физиология</string>
-    <string name="infoButton">Инфо</string>
+    <string name="cleanButton">Очистить</string>
     <string name="mapType">Тип карты</string>
     <string name="top_text_view">Кафедры КГМА</string>
     <string name="mortuary_title">Морфологический корпус</string>
