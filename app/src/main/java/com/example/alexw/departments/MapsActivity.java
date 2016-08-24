@@ -3,6 +3,8 @@ package com.example.alexw.departments;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -76,27 +78,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         normalViewBtn.setOnClickListener(btnTestListener);
         infoButton.setOnClickListener(btnTestListener);
 
-        Department physiology = new Department(getString(R.string.physiology),"42.842406", "74.607076");
+        Department physiology = new Department(getString(R.string.physiology), Constants.PHYSIOLOGY_COORDINATES);
 
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, Constants.DEPARTMENTS);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.departmentsArray, android.R.layout.simple_dropdown_item_1line);
         autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
         autoCompleteTextView.setAdapter(adapter);
 
         autoCompleteTextView.setThreshold(1);
-        registerForContextMenu(autoCompleteTextView);
+        //registerForContextMenu(autoCompleteTextView);
 
-        /*AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                switch (adapterView.getId()){
-                    case MENU_DEPARTMENT_PATHOPHYSIOLOGY:
-                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.PATHOPHYSILOGY_COORDINATES, 17));
-                        break;
-                }
-            }
-        };*/
-        autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+        /*autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 switch (i) {
@@ -109,11 +102,100 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 }
             }
-        });
+        });*/
 
+
+        TextWatcher textWatcher = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                switch (charSequence.toString()) {
+                    case "Кафедра патологической физиологии":
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.PATHOPHYSILOGY_COORDINATES, 17));
+                        break;
+                    case "Кафедра патологической анатомии":
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.PATHOPHYSILOGY_COORDINATES, 17));
+                        break;
+                    case "Кафедра гистологии, цитологии, эмбриологии":
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.PATHOPHYSILOGY_COORDINATES, 17));
+                        break;
+                    case "Кафедра нормальной и топографической анатомии":
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.PATHOPHYSILOGY_COORDINATES, 17));
+                        break;
+                    case "Кафедра судебной медицины и правоведения":
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.PATHOPHYSILOGY_COORDINATES, 17));
+                        break;
+                    case "Кафедра базисной и клинической фармакологии":
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.PHYSIOLOGY_COORDINATES, 17));
+                        break;
+                    case "Кафедра военно - медицинской подготовки и экстремальной медицины":
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.PHYSIOLOGY_COORDINATES, 17));
+                        break;
+                    case "Кафедра физики, математики, информатики и компьютерных технологий":
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.PHYSIOLOGY_COORDINATES, 17));
+                        break;
+                    case "Кафедра микробиологии, вирусологии и иммунологии":
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.PHYSIOLOGY_COORDINATES, 17));
+                        break;
+                    case "Кафедра фундаментальной и клинической физиологии":
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.PHYSIOLOGY_COORDINATES, 17));
+                        break;
+                    case "Кафедра фундаментальных дисциплин":
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.PHYSIOLOGY_COORDINATES, 17));
+                        break;
+                    case "Кафедра общественного здоровья и здравоохранения":
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.PHYSIOLOGY_COORDINATES, 17));
+                        break;
+                    case "Кафедра общей и клинической эпидемиологии":
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.PHYSIOLOGY_COORDINATES, 17));
+                        break;
+                    case "Кафедра физического воспитания":
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.PHYSIOLOGY_COORDINATES, 17));
+                        break;
+
+
+                    case "Кафедра гигиенических дисциплин":
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.FORTH_CORPUS_COORDINATES, 17));
+                        break;
+                    case " Кафедра общей гигиены":
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.FORTH_CORPUS_COORDINATES, 17));
+                        break;
+                    case "Кафедра иностранных и латинского языка":
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.FORTH_CORPUS_COORDINATES, 17));
+                        break;
+                    case "Кафедра кыргызского и русского языков":
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.FORTH_CORPUS_COORDINATES, 17));
+                        break;
+                    case "Кафедра клинической реабилитологии и физиотерапии":
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.FORTH_CORPUS_COORDINATES, 17));
+                        break;
+                    case "Кафедра философии и общественных наук":
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.FORTH_CORPUS_COORDINATES, 17));
+                        break;
+                    case "Кафедра фармакогнозии и химии лекарственных средств":
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.FORTH_CORPUS_COORDINATES, 17));
+                        break;
+                    case "Кафедра управления и экономики фармации, технологии лекарственных средств":
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.FORTH_CORPUS_COORDINATES, 17));
+                        break;
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        };
+        autoCompleteTextView.addTextChangedListener(textWatcher);
     }
 
-    final int MENU_DEPARTMENT_PHYSIOLOGY = 1;
+
+   /* final int MENU_DEPARTMENT_PHYSIOLOGY = 1;
     final int MENU_DEPARTMENT_PATHOPHYSIOLOGY = 2;
 
 
@@ -138,7 +220,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         }
         return super.onContextItemSelected(item);
-    }
+    }*/
 
     /**
      * Manipulates the map once available.
@@ -182,7 +264,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mortuary, 17));
 
         LatLng physiology = Constants.PHYSIOLOGY_COORDINATES;
-        mMap.addMarker(new MarkerOptions().position(physiology).title(getString(R.string.physiology)));
+        mMap.addMarker(new MarkerOptions().position(physiology).title(getString(R.string.main_corp)));
 
 
     }

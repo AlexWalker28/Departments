@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Кафедры</string>
     <string name="pathological_physiology">Патологическая физиология</string>
-    <string name="departments">Найти кафедру (зажать для полного списка)</string>
+    <string name="departments">Найти кафедру </string>
     <string name="normal">улицы</string>
     <string name="hybrid">гибрид</string>
     <string name="physiology">Нормальная физиология</string>
@@ -10,4 +10,5 @@
     <string name="mapType">Тип карты</string>
     <string name="top_text_view">Кафедры КГМА</string><string name="mortuary_departments">Кафедра гистологии, цитологии, эмбриологии         Кафедра нормальной и топографической анатомии         Кафедра патологической анатомии         Кафедра патологической физиологии         Кафедра судебной медицины и правоведения</string>
     <string name="mortuary_title">Морфологический корпус</string>
+    <string name="main_corp">Главный корпус</string>
 </resources>
