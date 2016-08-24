@@ -3,7 +3,7 @@ package com.example.alexw.departments;
 import com.google.android.gms.maps.model.LatLng;
 
 /**
- * Created by AlexWalker on 24.08.2016.
+ * This class is special feature too.
  */
 public class Department {
 

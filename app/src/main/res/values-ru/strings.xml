@@ -8,7 +8,11 @@
     <string name="physiology">Нормальная физиология</string>
     <string name="infoButton">Инфо</string>
     <string name="mapType">Тип карты</string>
-    <string name="top_text_view">Кафедры КГМА</string><string name="mortuary_departments">Кафедра гистологии, цитологии, эмбриологии         Кафедра нормальной и топографической анатомии         Кафедра патологической анатомии         Кафедра патологической физиологии         Кафедра судебной медицины и правоведения</string>
+    <string name="top_text_view">Кафедры КГМА</string>
     <string name="mortuary_title">Морфологический корпус</string>
     <string name="main_corp">Главный корпус</string>
+    <string name="fourth_corpus">Четвертый корпус</string>
+    <string name="obstetrics_and_gynecology1_title">Кафедра акушерства и гинекологии №1</string>
+    <string name="obstetrics_and_gynecology2_title">Кафедра акушерства и гинекологии №2</string>
+    <string name="departments_list">Список кафедр</string>
 </resources>
