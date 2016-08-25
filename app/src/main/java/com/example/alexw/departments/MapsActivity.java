@@ -353,7 +353,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         onMarkerClickListener = new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-
                 return false;
             }
         };

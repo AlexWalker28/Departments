@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Кафедры</string>
+    <string name="app_name">Кафедры КГМА</string>
     <string name="pathological_physiology">Патологическая физиология</string>
     <string name="departments">Найти кафедру </string>
     <string name="normal">улицы</string>
@@ -15,4 +15,5 @@
     <string name="obstetrics_and_gynecology1_title">Кафедра акушерства и гинекологии №1</string>
     <string name="obstetrics_and_gynecology2_title">Кафедра акушерства и гинекологии №2</string>
     <string name="departments_list">Список кафедр</string>
+    <string name="title_activity_maps">Кафедры КГМА</string>
 </resources>
