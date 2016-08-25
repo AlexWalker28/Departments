@@ -144,7 +144,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.PHYSIOLOGY_COORDINATES, 17));
                         break;
                     case "Кафедра военно - медицинской подготовки и экстремальной медицины":
-                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.PHYSIOLOGY_COORDINATES, 17));
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.ARMY, 17));
+
                         break;
                     case "Кафедра физики, математики, информатики и компьютерных технологий":
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.PHYSIOLOGY_COORDINATES, 17));
@@ -194,62 +195,98 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.FOURTH_CORPUS_COORDINATES, 19));
                         break;
 
+
+
                     case "Кафедра акушерства и гинекологии №1":
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.OBSTETRICS_AND_GYNECOLOGY_1_COORDINATES, 18));
-                        mMap.addMarker(new MarkerOptions().position(Constants.OBSTETRICS_AND_GYNECOLOGY_1_COORDINATES).title(getString(R.string.obstetrics_and_gynecology1_title)));
+                        /*mMap.addMarker(new MarkerOptions().position(Constants.OBSTETRICS_AND_GYNECOLOGY_1_COORDINATES).title(getString(R.string.obstetrics_and_gynecology1_title)));*/
                         break;
                     case "Кафедра акушерства и гинекологии №2":
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.OBSTETRICS_AND_GYNECOLOGY_2_COORDINATES, 18));
-                        mMap.addMarker(new MarkerOptions().position(Constants.OBSTETRICS_AND_GYNECOLOGY_2_COORDINATES).title(getString(R.string.obstetrics_and_gynecology2_title)));
+                        /*mMap.addMarker(new MarkerOptions().position(Constants.OBSTETRICS_AND_GYNECOLOGY_2_COORDINATES).title(getString(R.string.obstetrics_and_gynecology2_title)));*/
                         break;
                     case "Кафедра анестезиологии, реанимации и интенсивной терапии":
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.ANESTHESIOLOGY_COORDINATES, 18));
-                        mMap.addMarker(new MarkerOptions().position(Constants.ANESTHESIOLOGY_COORDINATES).title("Кафедра анестезиологии, реанимации и интенсивной терапии"));
+                        /*mMap.addMarker(new MarkerOptions().position(Constants.ANESTHESIOLOGY_COORDINATES).title("Кафедра анестезиологии, реанимации и интенсивной терапии"));*/
                         break;
                     case "Кафедра оториноларингологии":
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.OTORHINOLARYNGOLOGY_COORDINATES, 18));
-                        mMap.addMarker(new MarkerOptions().position(Constants.OTORHINOLARYNGOLOGY_COORDINATES).title("Кафедра оториноларингологии"));
+                       /* mMap.addMarker(new MarkerOptions().position(Constants.OTORHINOLARYNGOLOGY_COORDINATES).title("Кафедра оториноларингологии"));*/
                         break;
                     case "Кафедра офтальмологии":
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.OPHTHALMOLOGY_COORDINATES, 18));
-                        mMap.addMarker(new MarkerOptions().position(Constants.OPHTHALMOLOGY_COORDINATES).title("Кафедра офтальмологии"));
+                       /* mMap.addMarker(new MarkerOptions().position(Constants.OPHTHALMOLOGY_COORDINATES).title("Кафедра офтальмологии"));*/
                         break;
                     case "Кафедра лучевой диагностики и терапии":
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.ROENTGENOLOGY, 18));
-                        mMap.addMarker(new MarkerOptions().position(Constants.ROENTGENOLOGY).title("Кафедра лучевой диагностики и терапии"));
+                        /*mMap.addMarker(new MarkerOptions().position(Constants.ROENTGENOLOGY).title("Кафедра лучевой диагностики и терапии"));*/
                         break;
                     case "Кафедра неврологии с курсом медицинской генетики":
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.NEUROLOGY, 18));
-                        mMap.addMarker(new MarkerOptions().position(Constants.NEUROLOGY).title("Кафедра неврологии с курсом медицинской генетики"));
+                        /*mMap.addMarker(new MarkerOptions().position(Constants.NEUROLOGY).title("Кафедра неврологии с курсом медицинской генетики"));*/
                         break;
                     case "Кафедра пропедевтики внутренних болезней с курсом эндокринологии":
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.ENDOCRINOLOGY, 18));
-                        mMap.addMarker(new MarkerOptions().position(Constants.ENDOCRINOLOGY).title("Кафедра пропедевтики внутренних болезней с курсом эндокринологии"));
+                        /*mMap.addMarker(new MarkerOptions().position(Constants.ENDOCRINOLOGY).title("Кафедра пропедевтики внутренних болезней с курсом эндокринологии"));*/
                         break;
                     case "Кафедра пропедевтики детских болезней":
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.PROPED_PEDIATRICS, 18));
-                        mMap.addMarker(new MarkerOptions().position(Constants.PROPED_PEDIATRICS).title("Кафедра пропедевтики детских болезней"));
+                        /*mMap.addMarker(new MarkerOptions().position(Constants.PROPED_PEDIATRICS).title("Кафедра пропедевтики детских болезней"));*/
                         break;
                     case "Кафедра психиатрии, психотерапии и наркологии":
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.PSYCHIATRY, 18));
-                        mMap.addMarker(new MarkerOptions().position(Constants.PSYCHIATRY).title("Кафедра психиатрии, психотерапии и наркологии"));
+                        /*mMap.addMarker(new MarkerOptions().position(Constants.PSYCHIATRY).title("Кафедра психиатрии, психотерапии и наркологии"));*/
                         break;
                     case "Кафедра сестринского дела":
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.NURSE, 18));
                         mMap.addMarker(new MarkerOptions().position(Constants.NURSE).title("Кафедра сестринского дела"));
                         break;
+                    case "Кафедра ортопедической стоматологии":
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.NURSE, 18));
+                        mMap.addMarker(new MarkerOptions().position(Constants.NURSE).title("Кафедра ортопедической стоматологии"));
+                        break;
+                    case "Кафедра детской стоматологии":
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.NURSE, 18));
+                        mMap.addMarker(new MarkerOptions().position(Constants.NURSE).title("Кафедра детской стоматологии"));
+                        break;
+                    case "Кафедра терапевтической стоматологии":
+                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.NURSE, 18));
+                        mMap.addMarker(new MarkerOptions().position(Constants.NURSE).title("Кафедра терапевтической стоматологии"));
+                        break;
+                    case "Кафедра хирургической стоматологии и челюстно - лицевой хирургии":
+                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.NURSE, 18));
+                        mMap.addMarker(new MarkerOptions().position(Constants.NURSE).title("Кафедра хирургической стоматологии и челюстно - лицевой хирургии"));
+                        break;
                     case "Кафедра терапии общей практики с курсом семейной медицины":
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.FAMILY_MEDICINE, 18));
-                        mMap.addMarker(new MarkerOptions().position(Constants.FAMILY_MEDICINE).title("Кафедра терапии общей практики с курсом семейной медицины"));
+                        /*mMap.addMarker(new MarkerOptions().position(Constants.FAMILY_MEDICINE).title("Кафедра терапии общей практики с курсом семейной медицины"));*/
                         break;
                     case "Кафедра травматологии, ортопедии и экстремальной хирургии":
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.TRAUMATOLOGY, 18));
-                        mMap.addMarker(new MarkerOptions().position(Constants.TRAUMATOLOGY).title("Кафедра травматологии, ортопедии и экстремальной хирургии"));
+                        /*mMap.addMarker(new MarkerOptions().position(Constants.TRAUMATOLOGY).title("Кафедра травматологии, ортопедии и экстремальной хирургии"));*/
                         break;
                     case "Кафедра урологии и андрологии до- и последипломного обучения":
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.UROLOGY, 18));
-                        mMap.addMarker(new MarkerOptions().position(Constants.UROLOGY).title("Кафедра урологии и андрологии до- и последипломного обучения"));
+                        /*mMap.addMarker(new MarkerOptions().position(Constants.UROLOGY).title("Кафедра урологии и андрологии до- и последипломного обучения"));*/
                         break;
+                    case "Кафедра госпитальной терапии, профпатологии с курсом гематологии":
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.HOSPITAL_THERAPY, 18));
+                        /*mMap.addMarker(new MarkerOptions().position(Constants.HOSPITAL_THERAPY).title("Кафедра госпитальной терапии, профпатологии с курсом гематологии"));*/
+                        break;
+                    case "Центр гематологии":
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.HAEMATOLOGY, 18));
+                        /*mMap.addMarker(new MarkerOptions().position(Constants.HAEMATOLOGY).title("Центр гематологии"));*/
+                        break;
+                    case "Кафедра госпитальной педиатрии с курсом неонатологии":
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.HOSPITAL_PEDIATRICS_AND_NEONATOLOGY, 18));
+                        /*mMap.addMarker(new MarkerOptions().position(Constants.HOSPITAL_PEDIATRICS_AND_NEONATOLOGY).title("Кафедра госпитальной педиатрии с курсом неонатологии"));*/
+                        break;
+                    case "Кафедра факультетской терапии":
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.FACULTY_THERAPY, 17));
+                        /*mMap.addMarker(new MarkerOptions().position(Constants.FACULTY_THERAPY).title("Кафедра факультетской терапии"));
+                        mMap.addMarker(new MarkerOptions().position(Constants.FACULTY_THERAPY_CARDIOLOGY).title("Кафедра факультетской терапии (кардиология)"));*/
+                        break;
+
 
                 }
             }
@@ -334,6 +371,30 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         LatLng fourthCorpus = Constants.FOURTH_CORPUS_COORDINATES;
         mMap.addMarker(new MarkerOptions().position(fourthCorpus).title(getString(R.string.fourth_corpus)));
+
+
+        mMap.addMarker(new MarkerOptions().position(Constants.ARMY).title("Кафедра военно - медицинской подготовки и экстремальной медицины"));
+        mMap.addMarker(new MarkerOptions().position(Constants.OBSTETRICS_AND_GYNECOLOGY_1_COORDINATES).title(getString(R.string.obstetrics_and_gynecology1_title)));
+        mMap.addMarker(new MarkerOptions().position(Constants.OBSTETRICS_AND_GYNECOLOGY_2_COORDINATES).title(getString(R.string.obstetrics_and_gynecology2_title)));
+        mMap.addMarker(new MarkerOptions().position(Constants.ANESTHESIOLOGY_COORDINATES).title("Кафедра анестезиологии, реанимации и интенсивной терапии"));
+        mMap.addMarker(new MarkerOptions().position(Constants.OTORHINOLARYNGOLOGY_COORDINATES).title("Кафедра оториноларингологии"));
+        mMap.addMarker(new MarkerOptions().position(Constants.OPHTHALMOLOGY_COORDINATES).title("Кафедра офтальмологии"));
+        mMap.addMarker(new MarkerOptions().position(Constants.ROENTGENOLOGY).title("Кафедра лучевой диагностики и терапии"));
+        mMap.addMarker(new MarkerOptions().position(Constants.NEUROLOGY).title("Кафедра неврологии с курсом медицинской генетики"));
+        mMap.addMarker(new MarkerOptions().position(Constants.ENDOCRINOLOGY).title("Кафедра пропедевтики внутренних болезней с курсом эндокринологии"));
+        mMap.addMarker(new MarkerOptions().position(Constants.PROPED_PEDIATRICS).title("Кафедра пропедевтики детских болезней"));
+        mMap.addMarker(new MarkerOptions().position(Constants.PSYCHIATRY).title("Кафедра психиатрии, психотерапии и наркологии"));
+        mMap.addMarker(new MarkerOptions().position(Constants.NURSE).title("Стоматологический центр"));
+        mMap.addMarker(new MarkerOptions().position(Constants.FAMILY_MEDICINE).title("Кафедра терапии общей практики с курсом семейной медицины"));
+        mMap.addMarker(new MarkerOptions().position(Constants.TRAUMATOLOGY).title("Кафедра травматологии, ортопедии и экстремальной хирургии"));
+        mMap.addMarker(new MarkerOptions().position(Constants.UROLOGY).title("Кафедра урологии и андрологии до- и последипломного обучения"));
+        mMap.addMarker(new MarkerOptions().position(Constants.HOSPITAL_THERAPY).title("Кафедра госпитальной терапии, профпатологии с курсом гематологии"));
+        mMap.addMarker(new MarkerOptions().position(Constants.HAEMATOLOGY).title("Центр гематологии"));
+        mMap.addMarker(new MarkerOptions().position(Constants.HOSPITAL_PEDIATRICS_AND_NEONATOLOGY).title("Кафедра госпитальной педиатрии с курсом неонатологии"));
+        mMap.addMarker(new MarkerOptions().position(Constants.FACULTY_THERAPY).title("Кафедра факультетской терапии"));
+        mMap.addMarker(new MarkerOptions().position(Constants.FACULTY_THERAPY_CARDIOLOGY).title("Кафедра факультетской терапии (кардиология)"));
+
+
 
 
     }

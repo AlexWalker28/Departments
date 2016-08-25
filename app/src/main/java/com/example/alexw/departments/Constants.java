@@ -27,6 +27,36 @@ public class Constants {
     public static final LatLng FAMILY_MEDICINE = new LatLng(42.839009, 74.614180);
     public static final LatLng TRAUMATOLOGY = new LatLng(42.848012, 74.546730);
     public static final LatLng UROLOGY = new LatLng(42.865880, 74.596403);
+    public static final LatLng HOSPITAL_THERAPY = new LatLng (42.876364, 74.561616);
+    public static final LatLng HAEMATOLOGY = new LatLng (42.845771, 74.595824);
+    public static final LatLng HOSPITAL_PEDIATRICS_AND_NEONATOLOGY = new LatLng(42.842637, 74.570537);
+    public static final LatLng DENTISTRY = new LatLng (42.837167, 74.610838);
+    public static final LatLng FACULTY_THERAPY = new LatLng(42.871933, 74.596322);
+    public static final LatLng FACULTY_THERAPY_CARDIOLOGY = new LatLng (42.871308, 74.598570);
+    public static final LatLng ARMY = new LatLng (42.842161, 74.606080);
 
 
 }
+
+
+        /*Кафедра госпитальной хирургии с курсом оперативной хирургии им. академика М.М. Мамакеева
+        Кафедра детских инфекционных болезней
+        Кафедра детской хирургии
+        Кафедра дерматовенерологии
+        Кафедра инфекционных болезней
+        Кафедра нейрохирургии до дипломного и последипломного образования
+        Кафедра онкологии
+        Кафедра пропедхирургии
+
+
+        Кафедра факультетской педиатрии
+        Кафедра факультетской хирургии
+        Кафедра фтизиатрии
+        Кафедра хирургии общей практики с курсом комбустиологии*/
+
+
+
+
+
+
+
