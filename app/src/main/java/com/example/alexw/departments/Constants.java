@@ -10,6 +10,10 @@ public class Constants {
     /**
      * I don't know all department's coordinates, so there are only ones I'm sure about.
      */
+
+    public static final int SPLASH_ACTIVITY_LENGTH = 2000;
+
+
     public static final LatLng PHYSIOLOGY_COORDINATES = new LatLng(42.842406, 74.607076);
     public static final LatLng PATHOPHYSILOGY_COORDINATES = new LatLng(42.838715, 74.607440);
     public static final LatLng FOURTH_CORPUS_COORDINATES = new LatLng(42.841803, 74.608167);
