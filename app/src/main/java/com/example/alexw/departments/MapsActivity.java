@@ -1,17 +1,16 @@
 package com.example.alexw.departments;
 
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.support.v4.app.ActivityCompat;
+
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -28,6 +27,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Button normalViewBtn;
     private Button infoButton;
     private AutoCompleteTextView autoCompleteTextView;
+    private Switch mapTypeSwitch;
 
     Marker army;
     Marker obsGyn1;
@@ -77,21 +77,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        hybridViewBtn = (Button) findViewById(R.id.hybridViewBtn);
-        normalViewBtn = (Button) findViewById(R.id.normalViewBtn);
+
         infoButton = (Button) findViewById(R.id.infoButton);
+        mapTypeSwitch = (Switch)findViewById(R.id.maptypeswitch);
+
+        mapTypeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(compoundButton.isChecked() ){
+                    mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                }else {
+                    mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                }
+            }
+        });
 
 
         btnTestListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 switch (view.getId()) {
-                    case R.id.hybridViewBtn:
-                        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-                        break;
-                    case R.id.normalViewBtn:
-                        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-                        break;
+
                     case R.id.infoButton:
                         autoCompleteTextView.setText("");
                         break;
@@ -99,8 +105,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             }
         };
-        hybridViewBtn.setOnClickListener(btnTestListener);
-        normalViewBtn.setOnClickListener(btnTestListener);
+
         infoButton.setOnClickListener(btnTestListener);
 
 
@@ -158,10 +163,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+
+
         mMap = googleMap;
-
-
-
         /*mMap.setMyLocationEnabled(true);*/
         mMap.getUiSettings().setCompassEnabled(true);
         mMap.getUiSettings().setAllGesturesEnabled(true);

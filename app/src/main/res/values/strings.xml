@@ -7,7 +7,6 @@
     <string name="normal">normal</string>
     <string name="physiology">Physiology</string>
     <string name="cleanButton">Clean</string>
-    <string name="mapType">Map\'s type</string>
     <string name="top_text_view">KSMA\'s departments</string>
     <string name="mortuary_title">Mortuary</string>
     <string name="obstetrics_and_gynecology1_title">Obstetrics and gynecology #1</string>
@@ -78,4 +77,5 @@
     <string name="main_corp">Main thing</string>
     <string name="fourth_corpus">Fourth corpus</string>
     <string name="departments_list">Department\'s list</string>
+    <string name="map_type">Map type</string>
 </resources>
