@@ -17,7 +17,9 @@
             android:layout_weight="2"
             android:text="@string/top_text_view"
             android:textColor="#FFFFFF"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+
+            android:gravity="bottom" />
 
         <Button
             android:id="@+id/hybridViewBtn"
