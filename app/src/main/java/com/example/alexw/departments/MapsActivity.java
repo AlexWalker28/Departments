@@ -1,8 +1,11 @@
 package com.example.alexw.departments;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -23,9 +26,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private Button hybridViewBtn;
-    private Button normalViewBtn;
-    private Button infoButton;
+    private Button cleanButton;
+    private Button mistakeButton;
     private AutoCompleteTextView autoCompleteTextView;
     private Switch mapTypeSwitch;
 
@@ -63,7 +65,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     Marker mortuaryMarker;
 
 
-    View.OnClickListener btnTestListener;
+    View.OnClickListener onClickListener;
     GoogleMap.OnMapClickListener onMapClickListener;
     GoogleMap.OnMarkerClickListener onMarkerClickListener;
 
@@ -78,35 +80,31 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
 
-        infoButton = (Button) findViewById(R.id.infoButton);
-        mapTypeSwitch = (Switch)findViewById(R.id.maptypeswitch);
+        cleanButton = (Button) findViewById(R.id.cleanButton);
+        mistakeButton = (Button)findViewById(R.id.mistakeButton);
 
-        mapTypeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(compoundButton.isChecked() ){
-                    mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-                }else {
-                    mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-                }
-            }
-        });
-
-
-        btnTestListener = new View.OnClickListener() {
+        onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 switch (view.getId()) {
-
-                    case R.id.infoButton:
+                    case R.id.cleanButton:
                         autoCompleteTextView.setText("");
+                        break;
+                    case R.id.mistakeButton:
+                        Intent sentMessage = new Intent(Intent.ACTION_SENDTO);
+                        sentMessage.setData(Uri.parse("mailto:feedbackmessagetodeveloper@gmail.com"));
+                        sentMessage.putExtra(Intent.EXTRA_SUBJECT, "Сообщение об ошибке");
+                        if (sentMessage.resolveActivity(getPackageManager()) != null) {
+                            startActivity(sentMessage);
+                        }
                         break;
                 }
 
             }
         };
 
-        infoButton.setOnClickListener(btnTestListener);
+        cleanButton.setOnClickListener(onClickListener);
+        mistakeButton.setOnClickListener(onClickListener);
 
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.departmentsArray, android.R.layout.simple_dropdown_item_1line);
@@ -172,6 +170,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.getUiSettings().setZoomGesturesEnabled(true);
         mMap.getUiSettings().setMyLocationButtonEnabled(true);
+
+
+
+        mapTypeSwitch = (Switch)findViewById(R.id.maptypeswitch);
+        mapTypeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(compoundButton.isChecked() ){
+                    mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                }else {
+                    mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                }
+            }
+        });
 
 
         onMarkerClickListener = new GoogleMap.OnMarkerClickListener() {

@@ -78,4 +78,5 @@
     <string name="fourth_corpus">Fourth corpus</string>
     <string name="departments_list">Department\'s list</string>
     <string name="map_type">Map type</string>
+    <string name="mistake_button">Report mistake</string>
 </resources>

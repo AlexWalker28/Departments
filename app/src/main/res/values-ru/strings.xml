@@ -16,4 +16,5 @@
     <string name="departments_list">Список кафедр</string>
     <string name="title_activity_maps">Кафедры КГМА</string>
     <string name="map_type">Тип карты</string>
+    <string name="mistake_button">Сообщить об ошибке</string>
 </resources>

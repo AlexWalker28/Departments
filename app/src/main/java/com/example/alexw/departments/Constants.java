@@ -9,7 +9,7 @@ public class Constants {
      * I don't know all department's coordinates, so there are only ones I'm sure about.
      */
 
-    public static final int SPLASH_ACTIVITY_LENGTH = 2000;
+    public static final int SPLASH_ACTIVITY_LENGTH = 1000;
 
 
     public static final LatLng PHYSIOLOGY_COORDINATES = new LatLng(42.842406, 74.607076);
