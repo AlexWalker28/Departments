@@ -2,6 +2,7 @@ package com.example.alexw.departments;
 
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -30,6 +32,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Button mistakeButton;
     private AutoCompleteTextView autoCompleteTextView;
     private Switch mapTypeSwitch;
+
 
     Marker army;
     Marker obsGyn1;
@@ -78,6 +81,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+
 
 
         cleanButton = (Button) findViewById(R.id.cleanButton);
@@ -174,6 +179,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
         mapTypeSwitch = (Switch)findViewById(R.id.maptypeswitch);
+
+
+
+
+
+
         mapTypeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -184,6 +195,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 }
             }
         });
+
+        Configuration newConfig = new Configuration();
+        //TODO
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE && mMap.getMapType() == GoogleMap.MAP_TYPE_HYBRID) {
+            mapTypeSwitch.setChecked(true);
+            /*Toast.makeText(this, "Landscape and Hybrid", Toast.LENGTH_LONG).show();*/
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT && mMap.getMapType() == GoogleMap.MAP_TYPE_HYBRID) {
+            mapTypeSwitch.setChecked(true);
+            /*Toast.makeText(this, "Portrait and Hybrid", Toast.LENGTH_LONG).show();*/
+        } else {
+            mapTypeSwitch.setChecked(false);
+            /*Toast.makeText(this, "setchecked false", Toast.LENGTH_LONG).show();*/
+        }
 
 
         onMarkerClickListener = new GoogleMap.OnMarkerClickListener() {
