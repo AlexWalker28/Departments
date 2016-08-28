@@ -63,6 +63,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     Marker infect;
     Marker facSurg;
 
+    Marker neurosurg;
+    Marker infectChild;
+    Marker dermatoVen;
+    Marker childSurgery;
+
+
     Marker fourthCorp;
     Marker mainCorp;
     Marker mortuaryMarker;
@@ -296,6 +302,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mamakeev = mMap.addMarker(new MarkerOptions().position(Constants.MAMAKEEV).title("Кафедра госпитальной хирургии с курсом оперативной хирургии им. академика М.М. Мамакеева"));
         infect = mMap.addMarker(new MarkerOptions().position(Constants.INFECTION).title("Кафедра инфекционных болезней"));
         facSurg = mMap.addMarker(new MarkerOptions().position(Constants.FAC_SURGERY).title("Кафедра факультетской хирургии"));
+
+        neurosurg = mMap.addMarker(new MarkerOptions().position(Constants.NEUROSURGERY).title("Кафедра нейрохирургии до дипломного и последипломного образования"));
+        infectChild = mMap.addMarker(new MarkerOptions().position(Constants.INFECT_CHILD).title("Кафедра детских инфекционных болезней"));
+        dermatoVen = mMap.addMarker(new MarkerOptions().position(Constants.DERMATOVEN).title("Кафедра дерматовенерологии"));
+        childSurgery = mMap.addMarker(new MarkerOptions().position(Constants.CHILD_SURGERY).title("Кафедра детской хирургии"));
 
 
         TextWatcher textWatcher = new TextWatcher() {
@@ -541,6 +552,26 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.FAC_SURGERY, 18));
                         facSurg.showInfoWindow();
                         break;
+                    case "Кафедра нейрохирургии до дипломного и последипломного образования":
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.NEUROSURGERY, 18));
+                        neurosurg.showInfoWindow();
+                        break;
+                    case "Кафедра детских инфекционных болезней":
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.INFECT_CHILD, 18));
+                        infectChild.showInfoWindow();
+                        break;
+                    case "Кафедра детской хирургии":
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.CHILD_SURGERY, 18));
+                        childSurgery.showInfoWindow();
+                        break;
+                    case "Кафедра дерматовенерологии":
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.DERMATOVEN, 18));
+                        dermatoVen.showInfoWindow();
+                        break;
+                    /*case "Кафедра онкологии":
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants., 18));
+                        .showInfoWindow();
+                        break;*/
                 }
             }
 
