@@ -41,7 +41,7 @@ public class Constants {
     public static final LatLng INFECTION = new LatLng(42.862459, 74.595582);
     public static final LatLng FAC_SURGERY = new LatLng(42.875219, 74.561884);
     public static final LatLng NEUROSURGERY = new LatLng(42.870866, 74.597001);
-    /*public static final LatLng ONCOLOGY = new LatLng(); */
+    public static final LatLng ONCOLOGY = new LatLng(42.841820, 74.613153);
     public static final LatLng INFECT_CHILD  = new LatLng(42.860710, 74.593918);
     public static final LatLng DERMATOVEN    = new LatLng(42.862534, 74.595549);
     public static final LatLng CHILD_SURGERY = new LatLng(42.840642, 74.606942);
@@ -50,14 +50,7 @@ public class Constants {
 
 
 
-        /*
-        Кафедра детских инфекционных болезней
-        Кафедра детской хирургии
-        Кафедра дерматовенерологии
 
-        Кафедра нейрохирургии до дипломного и последипломного образования
-        Кафедра онкологии
-        */
 
 
 

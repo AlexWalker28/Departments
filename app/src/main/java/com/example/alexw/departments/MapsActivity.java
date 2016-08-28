@@ -67,6 +67,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     Marker infectChild;
     Marker dermatoVen;
     Marker childSurgery;
+    Marker oncology;
 
 
     Marker fourthCorp;
@@ -307,6 +308,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         infectChild = mMap.addMarker(new MarkerOptions().position(Constants.INFECT_CHILD).title("Кафедра детских инфекционных болезней"));
         dermatoVen = mMap.addMarker(new MarkerOptions().position(Constants.DERMATOVEN).title("Кафедра дерматовенерологии"));
         childSurgery = mMap.addMarker(new MarkerOptions().position(Constants.CHILD_SURGERY).title("Кафедра детской хирургии"));
+        oncology = mMap.addMarker(new MarkerOptions().position(Constants.ONCOLOGY).title("Кафедра онкологии"));
 
 
         TextWatcher textWatcher = new TextWatcher() {
@@ -339,16 +341,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.PATHOPHYSILOGY_COORDINATES, 17));
                         mortuaryMarker.showInfoWindow();
                         break;
-                    case "Кафедра базисной и клинической фармакологии":
-                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.PHYSIOLOGY_COORDINATES, 17));
-                        mortuaryMarker.showInfoWindow();
-                        break;
                     case "Кафедра военно - медицинской подготовки и экстремальной медицины":
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.ARMY, 17));
                         army.showInfoWindow();
                         break;
 
-
+                    case "Кафедра базисной и клинической фармакологии":
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.PHYSIOLOGY_COORDINATES, 17));
+                        mainCorp.showInfoWindow();
+                        break;
                     case "Кафедра физики, математики, информатики и компьютерных технологий":
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.PHYSIOLOGY_COORDINATES, 17));
                         mainCorp.showInfoWindow();
@@ -403,14 +404,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.FOURTH_CORPUS_COORDINATES, 19));
                         fourthCorp.showInfoWindow();
                         break;
-                    case "Кафедра фармакогнозии и химии лекарственных средств":
+                    /*case "Кафедра фармакогнозии и химии лекарственных средств":
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.FOURTH_CORPUS_COORDINATES, 19));
                         fourthCorp.showInfoWindow();
                         break;
                     case "Кафедра управления и экономики фармации, технологии лекарственных средств":
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.FOURTH_CORPUS_COORDINATES, 19));
                         fourthCorp.showInfoWindow();
-                        break;
+                        break;*/
 
 
                     case "Кафедра акушерства и гинекологии №1":
@@ -568,10 +569,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.DERMATOVEN, 18));
                         dermatoVen.showInfoWindow();
                         break;
-                    /*case "Кафедра онкологии":
-                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants., 18));
-                        .showInfoWindow();
-                        break;*/
+                    case "Кафедра онкологии":
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.ONCOLOGY, 18));
+                        oncology.showInfoWindow();
+
+                        break;
                 }
             }
 
