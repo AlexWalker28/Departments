@@ -6,7 +6,6 @@ import android.content.res.Configuration;
 import android.net.Uri;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.support.v4.app.NotificationCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -15,7 +14,6 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -103,6 +101,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         autoCompleteTextView.setText("");
                         break;
                     case R.id.mistakeButton:
+                        /*Intent intent = new Intent(MapsActivity.this, Timetable.class);
+                        startActivity(intent);*/
                         Intent sentMessage = new Intent(Intent.ACTION_SENDTO);
                         sentMessage.setData(Uri.parse("mailto:feedbackmessagetodeveloper@gmail.com"));
                         sentMessage.putExtra(Intent.EXTRA_SUBJECT, "Сообщение об ошибке");
@@ -292,8 +292,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         hospThera = mMap.addMarker(new MarkerOptions().position(Constants.HOSPITAL_THERAPY).title("Кафедра госпитальной терапии, профпатологии с курсом гематологии"));
         haema = mMap.addMarker(new MarkerOptions().position(Constants.HAEMATOLOGY).title("Центр гематологии"));
         neonat = mMap.addMarker(new MarkerOptions().position(Constants.HOSPITAL_PEDIATRICS_AND_NEONATOLOGY).title("Кафедра госпитальной педиатрии с курсом неонатологии"));
-        facThera = mMap.addMarker(new MarkerOptions().position(Constants.FACULTY_THERAPY).title("Кафедра факультетской терапии"));
-        facTheraCard = mMap.addMarker(new MarkerOptions().position(Constants.FACULTY_THERAPY_CARDIOLOGY).title("Кафедра факультетской терапии (кардиология)"));
+        facThera = mMap.addMarker(new MarkerOptions().position(Constants.FACULTY_THERAPY).title("Кафедра факультетской терапии (НЦКиТ)"));
+        facTheraCard = mMap.addMarker(new MarkerOptions().position(Constants.FACULTY_THERAPY_POLICLINIC).title("Кафедра факультетской терапии (поликлиника)"));
 
 
         propSurg = mMap.addMarker(new MarkerOptions().position(Constants.PROPED_SURGERY).title("Кафедра пропедхирургии"));
@@ -519,10 +519,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         /*mMap.addMarker(new MarkerOptions().position(Constants.HOSPITAL_PEDIATRICS_AND_NEONATOLOGY).title("Кафедра госпитальной педиатрии с курсом неонатологии"));*/
                         neonat.showInfoWindow();
                         break;
-                    case "Кафедра факультетской терапии":
+                    case "Кафедра факультетской терапии (НЦКиТ)":
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.FACULTY_THERAPY, 17));
-                        /*mMap.addMarker(new MarkerOptions().position(Constants.FACULTY_THERAPY).title("Кафедра факультетской терапии"));
-                        mMap.addMarker(new MarkerOptions().position(Constants.FACULTY_THERAPY_CARDIOLOGY).title("Кафедра факультетской терапии (кардиология)"));*/
+                        /*mMap.addMarker(new MarkerOptions().position(Constants.FACULTY_THERAPY).title("Кафедра факультетской терапии (НЦКиТ)"));
+                        mMap.addMarker(new MarkerOptions().position(Constants.FACULTY_THERAPY_POLICLINIC).title("Кафедра факультетской терапии (кардиология)"));*/
                         facThera.showInfoWindow();
                         break;
                     case "Кафедра пропедхирургии":

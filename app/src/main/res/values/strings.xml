@@ -66,7 +66,7 @@
         <item> Кафедра травматологии, ортопедии и экстремальной хирургии</item>
         <item>Кафедра терапевтической стоматологии</item>
         <item> Кафедра урологии и андрологии до- и последипломного обучения</item>
-        <item>Кафедра факультетской терапии</item>
+        <item>Кафедра факультетской терапии (НЦКиТ)</item>
         <item>Кафедра факультетской педиатрии</item>
         <item>Кафедра факультетской хирургии</item>
         <item> Кафедра фтизиатрии</item>
@@ -79,4 +79,7 @@
     <string name="departments_list">Department\'s list</string>
     <string name="map_type">Map type</string>
     <string name="mistake_button">Report mistake</string>
+
+    <string name="maps_api_debug_key" translatable="false">AIzaSyAgawZF0PfNeBu1JahJtaTpkW9h6qMzijs</string>
+    <string name="maps_api_release_key" translatable="false">AIzaSyBuyQitM1K97_wI1H1-KJEOUxgecwsXjqk</string>
 </resources>
