@@ -36,7 +36,7 @@ public class Constants {
     public static final LatLng PROPED_SURGERY = new LatLng(42.865719, 74.595228);
     public static final LatLng FACULTY_PEDIATRICS = new LatLng(42.842565, 74.570511);
     public static final LatLng SURGERY_COMBUST = new LatLng(42.875219, 74.561884);
-    public static final LatLng TB = new LatLng(42.842259, 74.610540);
+    public static final LatLng TB = new LatLng(42.842103, 74.610040);
     public static final LatLng MAMAKEEV = new LatLng (42.852449, 74.582453);
     public static final LatLng INFECTION = new LatLng(42.862459, 74.595582);
     public static final LatLng FAC_SURGERY = new LatLng(42.875219, 74.561884);
