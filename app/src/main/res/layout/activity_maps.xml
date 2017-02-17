@@ -2,48 +2,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#3F51B5">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="@string/top_text_view"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            android:gravity="center_vertical"
-            android:layout_column="0"
-            android:layout_weight="1"
-            android:layout_marginStart="5dp"/>
-
-        <Button
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/mistake_button"
-            android:textSize="11sp"
-            android:textColor="@color/colorPrimaryDark"
-            android:background="@color/colorPrimary"
-            android:shadowColor="@color/colorPrimary"
-            android:id="@+id/mistakeButton"
-            android:layout_column="1"
-            android:layout_weight="2" />
-
-        <Switch
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/map_type"
-            android:textColor="#FFFFFF"
-            android:id="@+id/maptypeswitch"
-            android:layout_column="2"
-            android:gravity="center_vertical"
-            android:layout_weight="1" />
+        <include
+            android:id="@+id/tool_bar"
+            layout="@layout/toolbar" />
     </TableRow>
 
     <TableLayout

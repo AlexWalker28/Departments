@@ -35,7 +35,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value= "AIzaSyBuyQitM1K97_wI1H1-KJEOUxgecwsXjqk" />
+            android:value= "AIzaSyAgawZF0PfNeBu1JahJtaTpkW9h6qMzijs" />
 
         <activity android:name=".SplashScreen">
             <intent-filter>
