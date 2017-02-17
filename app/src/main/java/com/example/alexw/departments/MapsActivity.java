@@ -97,6 +97,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         MenuInflater inflater = popup.getMenuInflater();
         inflater.inflate(R.menu.actionbar_menu, popup.getMenu());
 
+        mapTypeHybridMenuItem = popup.getMenu().getItem(0); //first item (counting from 0) must be map type
+        mapTypeHybridMenuItem.setChecked(false);
+
         onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -145,7 +148,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     private void switchMapType() {
-        mapTypeHybridMenuItem = popup.getMenu().getItem(0); //first item (counting from 0) must be map type
         mapTypeHybridMenuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
