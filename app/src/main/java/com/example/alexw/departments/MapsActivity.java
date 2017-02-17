@@ -107,9 +107,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     case R.id.actionbarImageButton:
                         popup.show();
                         break;
-
                 }
-
             }
         };
         cleanButton.setOnClickListener(onClickListener);
@@ -130,8 +128,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
 
-
-
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.departmentsArray
                                                                                  , android.R.layout.simple_dropdown_item_1line);
         autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
@@ -150,18 +146,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private void switchMapType() {
         mapTypeHybridMenuItem = popup.getMenu().getItem(0); //first item (counting from 0) must be map type
-        mapTypeHybridMenuItem.setChecked(false);
         mapTypeHybridMenuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                if(menuItem.isChecked() ){
-                    menuItem.setChecked(false);
-                } else {
+                if(!menuItem.isChecked() ){
                     menuItem.setChecked(true);
-                }
-                if(menuItem.isChecked()){
                     mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
                 } else {
+                    menuItem.setChecked(false);
                     mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
                 }
                 return true;
@@ -209,7 +201,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.getUiSettings().setZoomGesturesEnabled(true);
         mMap.getUiSettings().setMyLocationButtonEnabled(true);
 
-        /*mapTypeSwitch = (Switch)findViewById(R.id.map_type_switch);*/
 
         LatLng mortuary = Constants.PATHOPHYSILOGY_COORDINATES;
         mortuaryMarker = mMap.addMarker(new MarkerOptions().position(mortuary).title(getString(R.string.mortuary_title)));

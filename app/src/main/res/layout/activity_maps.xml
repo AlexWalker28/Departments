@@ -13,7 +13,7 @@
         <include
             android:id="@+id/tool_bar"
             layout="@layout/toolbar"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
     </LinearLayout>
@@ -30,8 +30,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#FFFFFF"
-            android:hint="@string/departments"
-            />
+            android:hint="@string/departments"/>
 
         <Button
             android:id="@+id/cleanButton"
