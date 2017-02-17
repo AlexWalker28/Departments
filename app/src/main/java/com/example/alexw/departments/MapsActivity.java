@@ -132,6 +132,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
                         }
                         break;
+                    case R.id.kgma_item:
+                        goKGMA();
                 }
                 return true;
             }
@@ -172,6 +174,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
+    private void goKGMA() {
+        Intent goKGMA = new Intent(Intent.ACTION_VIEW);
+        goKGMA.setData(Uri.parse("https://vk.com/lovekgma"));
+        startActivity(goKGMA);
+    }
 
 
 
