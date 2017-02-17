@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "836005180177",
+    "firebase_url": "https://departments-f1078.firebaseio.com",
+    "project_id": "departments-f1078",
+    "storage_bucket": "departments-f1078.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:836005180177:android:22c181c337bee49a",
+        "android_client_info": {
+          "package_name": "com.alexwalker.departments"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "836005180177-st491na19ul2uvdcm87p0i4e53l8v68r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.alexwalker.departments",
+            "certificate_hash": "AD381AA809AA1F930017A0A2A7FE81995089DBAE"
+          }
+        },
+        {
+          "client_id": "836005180177-am46tv2qdpt4q792bblvsca55g21o6km.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.alexwalker.departments",
+            "certificate_hash": "DB311974F8ED85E173DCB18D74C33A8F94065540"
+          }
+        },
+        {
+          "client_id": "836005180177-emcipegkh3k1eah0tv3ujbeqkm5emeit.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUyk1qEGHd9ISg0cboVGZA5FsU8nEW2BQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "836005180177-emcipegkh3k1eah0tv3ujbeqkm5emeit.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
