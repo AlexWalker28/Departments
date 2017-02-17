@@ -74,8 +74,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
     View.OnClickListener onClickListener;
-    GoogleMap.OnMapClickListener onMapClickListener;
-    GoogleMap.OnMarkerClickListener onMarkerClickListener;
 
 
     @Override
@@ -119,46 +117,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mistakeButton.setOnClickListener(onClickListener);
 
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.departmentsArray, android.R.layout.simple_dropdown_item_1line);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.departmentsArray
+                                                                                 , android.R.layout.simple_dropdown_item_1line);
         autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
         autoCompleteTextView.setAdapter(adapter);
         autoCompleteTextView.setThreshold(1);
-        //registerForContextMenu(autoCompleteTextView);
-
-
     }
 
-
-    /**
-     * I will turn this feature on after I figure out how to make it work without having to repeat
-     * code 50 times
-     */
-   /* final int MENU_DEPARTMENT_PHYSIOLOGY = 1;
-    final int MENU_DEPARTMENT_PATHOPHYSIOLOGY = 2;
-
-
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
-
-        menu.add(0, MENU_DEPARTMENT_PHYSIOLOGY, 0, R.string.physiology);
-        menu.add(0, MENU_DEPARTMENT_PATHOPHYSIOLOGY, 0, R.string.pathological_physiology);
-    }
-
-    @Override
-    public boolean onContextItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case MENU_DEPARTMENT_PHYSIOLOGY:
-                autoCompleteTextView.setText(R.string.physiology);
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.PHYSIOLOGY_COORDINATES, 17));
-                break;
-            case MENU_DEPARTMENT_PATHOPHYSIOLOGY:
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.PATHOPHYSILOGY_COORDINATES, 17));
-                break;
-
-        }
-        return super.onContextItemSelected(item);
-    }*/
 
     /**
      * Manipulates the map once available.
@@ -176,21 +141,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
         mMap = googleMap;
-        /*mMap.setMyLocationEnabled(true);*/
         mMap.getUiSettings().setCompassEnabled(true);
         mMap.getUiSettings().setAllGesturesEnabled(true);
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.getUiSettings().setZoomGesturesEnabled(true);
         mMap.getUiSettings().setMyLocationButtonEnabled(true);
 
-
-
         mapTypeSwitch = (Switch)findViewById(R.id.maptypeswitch);
-
-
-
-
-
 
         mapTypeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -207,25 +164,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //TODO
         if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE && mMap.getMapType() == GoogleMap.MAP_TYPE_HYBRID) {
             mapTypeSwitch.setChecked(true);
-            /*Toast.makeText(this, "Landscape and Hybrid", Toast.LENGTH_LONG).show();*/
         } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT && mMap.getMapType() == GoogleMap.MAP_TYPE_HYBRID) {
             mapTypeSwitch.setChecked(true);
-            /*Toast.makeText(this, "Portrait and Hybrid", Toast.LENGTH_LONG).show();*/
         } else {
             mapTypeSwitch.setChecked(false);
-            /*Toast.makeText(this, "setchecked false", Toast.LENGTH_LONG).show();*/
         }
-
-
-        onMarkerClickListener = new GoogleMap.OnMarkerClickListener() {
-            @Override
-            public boolean onMarkerClick(Marker marker) {
-                return false;
-            }
-        };
-
-
-        mMap.setOnMarkerClickListener(onMarkerClickListener);
 
 
         LatLng mortuary = Constants.PATHOPHYSILOGY_COORDINATES;
