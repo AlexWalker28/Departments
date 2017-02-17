@@ -96,9 +96,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         popup = new PopupMenu(MapsActivity.this, actionbar);
         MenuInflater inflater = popup.getMenuInflater();
         inflater.inflate(R.menu.actionbar_menu, popup.getMenu());
+        mapTypeHybridMenuItem = popup.getMenu().findItem(R.id.map_type_hybrid_menu_item);
 
-        mapTypeHybridMenuItem = popup.getMenu().getItem(0); //first item (counting from 0) must be map type
-        mapTypeHybridMenuItem.setChecked(false);
+
 
         onClickListener = new View.OnClickListener() {
             @Override
@@ -124,7 +124,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         sendMessage();
                         break;
                     case R.id.map_type_hybrid_menu_item:
-                        switchMapType();
+                        if(!item.isChecked() ){
+                            item.setChecked(true);
+                            mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                        } else {
+                            item.setChecked(false);
+                            mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                        }
                         break;
                 }
                 return true;
@@ -136,31 +142,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
         autoCompleteTextView.setAdapter(adapter);
         autoCompleteTextView.setThreshold(1);
-    }
 
-    private void sendMessage() {
-        Intent sentMessage = new Intent(Intent.ACTION_SENDTO);
-        sentMessage.setData(Uri.parse("mailto:feedbackmessagetodeveloper@gmail.com"));
-        sentMessage.putExtra(Intent.EXTRA_SUBJECT, "Сообщение об ошибке");
-        if (sentMessage.resolveActivity(getPackageManager()) != null) {
-            startActivity(sentMessage);
-        }
-    }
 
-    private void switchMapType() {
-        mapTypeHybridMenuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
-                if(!menuItem.isChecked() ){
-                    menuItem.setChecked(true);
-                    mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-                } else {
-                    menuItem.setChecked(false);
-                    mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-                }
-                return true;
-            }
-        });
         /*OrientationEventListener orientationEventListener = new OrientationEventListener(getApplication()) {
             @Override
             public void onOrientationChanged(int i) {
@@ -179,6 +162,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         orientationEventListener.canDetectOrientation();
         orientationEventListener.enable();*/
     }
+
+    private void sendMessage() {
+        Intent sentMessage = new Intent(Intent.ACTION_SENDTO);
+        sentMessage.setData(Uri.parse("mailto:feedbackmessagetodeveloper@gmail.com"));
+        sentMessage.putExtra(Intent.EXTRA_SUBJECT, "Сообщение об ошибке");
+        if (sentMessage.resolveActivity(getPackageManager()) != null) {
+            startActivity(sentMessage);
+        }
+    }
+
+
+
 
 
     /**
