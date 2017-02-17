@@ -15,7 +15,7 @@
         <ImageButton
             android:layout_width="18dp"
             android:layout_height="18dp"
-            android:id="@+id/menuImageButton"
+            android:id="@+id/actionbarImageButton"
             android:background="@drawable/ic_action_name"
             android:layout_gravity="end"
             android:layout_marginEnd="@dimen/activity_vertical_margin"
@@ -32,30 +32,5 @@
             android:layout_column="0"
             android:layout_weight="1"
             android:layout_marginStart="5dp"/>
-
-        <!--<Button
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/mistake_button"
-            android:textSize="11sp"
-            android:textColor="@color/colorPrimaryDark"
-            android:background="@color/colorPrimary"
-            android:shadowColor="@color/colorPrimary"
-            android:id="@+id/mistakeButton"
-            android:layout_column="1"
-            android:layout_weight="2" />
-
-        <Switch
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/map_type"
-            android:textColor="#FFFFFF"
-            android:id="@+id/maptypeswitch"
-            android:layout_column="2"
-            android:gravity="center_vertical"
-            android:layout_weight="1" />-->
-
-
     </android.support.v7.widget.Toolbar>
 </LinearLayout>

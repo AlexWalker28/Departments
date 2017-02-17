@@ -77,7 +77,7 @@
     <string name="main_corp">Main thing</string>
     <string name="fourth_corpus">Fourth corpus</string>
     <string name="departments_list">Department\'s list</string>
-    <string name="map_type">Map type</string>
+    <string name="map_type_hybrid">Hybrid</string>
     <string name="mistake_button">Report mistake</string>
 
     <string name="maps_api_debug_key" translatable="false">AIzaSyAgawZF0PfNeBu1JahJtaTpkW9h6qMzijs</string>

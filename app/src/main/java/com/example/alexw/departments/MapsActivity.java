@@ -6,14 +6,17 @@ import android.content.res.Configuration;
 import android.net.Uri;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v7.widget.PopupMenu;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.OrientationEventListener;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.Switch;
+import android.widget.ImageButton;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -27,9 +30,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     private Button cleanButton;
-    private Button mistakeButton;
+    private ImageButton actionbar;
+    private PopupMenu popup;
+    private MenuItem mapTypeHybridMenuItem;
     private AutoCompleteTextView autoCompleteTextView;
-    private Switch mapTypeSwitch;
 
 
     Marker army;
@@ -86,10 +90,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
 
-
-
         cleanButton = (Button) findViewById(R.id.cleanButton);
-        mistakeButton = (Button)findViewById(R.id.mistakeButton);
+        actionbar = (ImageButton)findViewById(R.id.actionbarImageButton);
+
+        popup = new PopupMenu(MapsActivity.this, actionbar);
+        MenuInflater inflater = popup.getMenuInflater();
+        inflater.inflate(R.menu.actionbar_menu, popup.getMenu());
 
         onClickListener = new View.OnClickListener() {
             @Override
@@ -98,23 +104,32 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     case R.id.cleanButton:
                         autoCompleteTextView.setText("");
                         break;
-                    case R.id.mistakeButton:
-                        /*Intent intent = new Intent(MapsActivity.this, Timetable.class);
-                        startActivity(intent);*/
-                        Intent sentMessage = new Intent(Intent.ACTION_SENDTO);
-                        sentMessage.setData(Uri.parse("mailto:feedbackmessagetodeveloper@gmail.com"));
-                        sentMessage.putExtra(Intent.EXTRA_SUBJECT, "Сообщение об ошибке");
-                        if (sentMessage.resolveActivity(getPackageManager()) != null) {
-                            startActivity(sentMessage);
-                        }
+                    case R.id.actionbarImageButton:
+                        popup.show();
                         break;
+
                 }
 
             }
         };
-
         cleanButton.setOnClickListener(onClickListener);
-        mistakeButton.setOnClickListener(onClickListener);
+        actionbar.setOnClickListener(onClickListener);
+
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.mistake_report_menu_item:
+                        sendMessage();
+                        break;
+                    case R.id.map_type_hybrid_menu_item:
+                        switchMapType();
+                        break;
+                }
+                return true;
+            }
+        });
+
 
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.departmentsArray
@@ -122,6 +137,53 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
         autoCompleteTextView.setAdapter(adapter);
         autoCompleteTextView.setThreshold(1);
+    }
+
+    private void sendMessage() {
+        Intent sentMessage = new Intent(Intent.ACTION_SENDTO);
+        sentMessage.setData(Uri.parse("mailto:feedbackmessagetodeveloper@gmail.com"));
+        sentMessage.putExtra(Intent.EXTRA_SUBJECT, "Сообщение об ошибке");
+        if (sentMessage.resolveActivity(getPackageManager()) != null) {
+            startActivity(sentMessage);
+        }
+    }
+
+    private void switchMapType() {
+        mapTypeHybridMenuItem = popup.getMenu().getItem(0); //first item (counting from 0) must be map type
+        mapTypeHybridMenuItem.setChecked(false);
+        mapTypeHybridMenuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                if(menuItem.isChecked() ){
+                    menuItem.setChecked(false);
+                } else {
+                    menuItem.setChecked(true);
+                }
+                if(menuItem.isChecked()){
+                    mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                } else {
+                    mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                }
+                return true;
+            }
+        });
+        /*OrientationEventListener orientationEventListener = new OrientationEventListener(getApplication()) {
+            @Override
+            public void onOrientationChanged(int i) {
+                Configuration newConfig = new Configuration();
+                if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE
+                        && mMap.getMapType() == GoogleMap.MAP_TYPE_HYBRID) {
+                    mapTypeHybridMenuItem.setChecked(true);
+                } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT
+                        && mMap.getMapType() == GoogleMap.MAP_TYPE_HYBRID) {
+                    mapTypeHybridMenuItem.setChecked(true);
+                } else {
+                    mapTypeHybridMenuItem.setChecked(false);
+                }
+            }
+        };
+        orientationEventListener.canDetectOrientation();
+        orientationEventListener.enable();*/
     }
 
 
@@ -147,29 +209,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.getUiSettings().setZoomGesturesEnabled(true);
         mMap.getUiSettings().setMyLocationButtonEnabled(true);
 
-        mapTypeSwitch = (Switch)findViewById(R.id.maptypeswitch);
-
-        mapTypeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(compoundButton.isChecked() ){
-                    mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-                }else {
-                    mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-                }
-            }
-        });
-
-        Configuration newConfig = new Configuration();
-        //TODO
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE && mMap.getMapType() == GoogleMap.MAP_TYPE_HYBRID) {
-            mapTypeSwitch.setChecked(true);
-        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT && mMap.getMapType() == GoogleMap.MAP_TYPE_HYBRID) {
-            mapTypeSwitch.setChecked(true);
-        } else {
-            mapTypeSwitch.setChecked(false);
-        }
-
+        /*mapTypeSwitch = (Switch)findViewById(R.id.map_type_switch);*/
 
         LatLng mortuary = Constants.PATHOPHYSILOGY_COORDINATES;
         mortuaryMarker = mMap.addMarker(new MarkerOptions().position(mortuary).title(getString(R.string.mortuary_title)));
