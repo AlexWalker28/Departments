@@ -116,10 +116,156 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapTypeHybridMenuItem = popup.getMenu().findItem(R.id.map_type_hybrid_menu_item);
 
 
-        Departments department = new Departments("Кафедра анестезиологии, реанимации и интенсивной терапии"
-                 , coordinates = new Coordinates(Constants.ANESTHESIOLOGY_COORDINATES.latitude
-                 , Constants.ANESTHESIOLOGY_COORDINATES.longitude));
+        /*Departments department = new Departments("Кафедра военно - медицинской подготовки и экстремальной медицины"
+                 , coordinates = new Coordinates(Constants.ARMY.latitude
+                 , Constants.ARMY.longitude));
+        Departments department1 = new Departments("Кафедра акушерства и гинекологии №1"
+                , coordinates = new Coordinates(Constants.OBSTETRICS_AND_GYNECOLOGY_1_COORDINATES.latitude
+                , Constants.OBSTETRICS_AND_GYNECOLOGY_1_COORDINATES.longitude));
+        Departments department2 = new Departments("Кафедра акушерства и гинекологии №2"
+                , coordinates = new Coordinates(Constants.OBSTETRICS_AND_GYNECOLOGY_2_COORDINATES.latitude
+                , Constants.OBSTETRICS_AND_GYNECOLOGY_2_COORDINATES.longitude));
+        Departments department3 = new Departments("Кафедра анестезиологии, реанимации и интенсивной терапии"
+                , coordinates = new Coordinates(Constants.ANESTHESIOLOGY_COORDINATES.latitude
+                , Constants.ANESTHESIOLOGY_COORDINATES.longitude));
+        Departments department4 = new Departments("Кафедра госпитальной терапии, профпатологии с курсом гематологии"
+                , coordinates = new Coordinates(Constants.HAEMATOLOGY.latitude
+                , Constants.HAEMATOLOGY.longitude));
+        Departments department5 = new Departments("Кафедра госпитальной педиатрии с курсом неонатологии"
+                , coordinates = new Coordinates(Constants.HOSPITAL_PEDIATRICS_AND_NEONATOLOGY.latitude
+                , Constants.HOSPITAL_PEDIATRICS_AND_NEONATOLOGY.longitude));
+        Departments department6 = new Departments("Кафедра госпитальной хирургии с курсом оперативной хирургии им. академика М.М. Мамакеева"
+                , coordinates = new Coordinates(Constants.MAMAKEEV.latitude
+                , Constants.MAMAKEEV.longitude));
+        Departments department7 = new Departments("Кафедра детских инфекционных болезней"
+                , coordinates = new Coordinates(Constants.INFECT_CHILD.latitude
+                , Constants.INFECT_CHILD.longitude));
+        Departments department8 = new Departments("Кафедра дерматовенерологии"
+                , coordinates = new Coordinates(Constants.DERMATOVEN.latitude
+                , Constants.DERMATOVEN.longitude));
+        Departments department9 = new Departments("Кафедра детской хирургии"
+                , coordinates = new Coordinates(Constants.CHILD_SURGERY.latitude
+                , Constants.CHILD_SURGERY.longitude));
+        Departments department10 = new Departments("Кафедра детской стоматологии"
+                , coordinates = new Coordinates(Constants.NURSE.latitude
+                , Constants.NURSE.longitude));
+        Departments department11 = new Departments("Кафедра инфекционных болезней"
+                , coordinates = new Coordinates(Constants.INFECTION.latitude
+                , Constants.INFECTION.longitude));
+        Departments department12 = new Departments("Кафедра лучевой диагностики и терапии"
+                , coordinates = new Coordinates(Constants.ROENTGENOLOGY.latitude
+                , Constants.ROENTGENOLOGY.longitude));
+        Departments department13 = new Departments("Кафедра неврологии с курсом медицинской генетики"
+                , coordinates = new Coordinates(Constants.NEUROLOGY.latitude
+                , Constants.NEUROLOGY.longitude));
+        Departments department14 = new Departments("Кафедра нейрохирургии до дипломного и последипломного образования"
+                , coordinates = new Coordinates(Constants.NEUROSURGERY.latitude
+                , Constants.NEUROSURGERY.longitude));
+        Departments department15 = new Departments("Кафедра онкологии"
+                , coordinates = new Coordinates(Constants.ONCOLOGY.latitude
+                , Constants.ONCOLOGY.longitude));
+        Departments department16 = new Departments("Кафедра оториноларингологии"
+                , coordinates = new Coordinates(Constants.OTORHINOLARYNGOLOGY_COORDINATES.latitude
+                , Constants.OTORHINOLARYNGOLOGY_COORDINATES.longitude));
+        Departments department17 = new Departments("Кафедра офтальмологии"
+                , coordinates = new Coordinates(Constants.OPHTHALMOLOGY_COORDINATES.latitude
+                , Constants.OPHTHALMOLOGY_COORDINATES.longitude));
+        Departments department18 = new Departments("Кафедра ортопедической стоматологии"
+                , coordinates = new Coordinates(Constants.NURSE.latitude
+                , Constants.NURSE.longitude));
+        Departments department19 = new Departments("Кафедра пропедевтики внутренних болезней с курсом эндокринологии"
+                , coordinates = new Coordinates(Constants.ENDOCRINOLOGY.latitude
+                , Constants.ENDOCRINOLOGY.longitude));
+        Departments department20 = new Departments("Кафедра пропедевтики детских болезней"
+                , coordinates = new Coordinates(Constants.PROPED_PEDIATRICS.latitude
+                , Constants.PROPED_PEDIATRICS.longitude));
+        Departments department21 = new Departments("Кафедра пропедхирургии"
+                , coordinates = new Coordinates(Constants.PROPED_SURGERY.latitude
+                , Constants.PROPED_SURGERY.longitude));
+        Departments department22 = new Departments("Кафедра психиатрии, психотерапии и наркологии"
+                , coordinates = new Coordinates(Constants.PSYCHIATRY.latitude
+                , Constants.PSYCHIATRY.longitude));
+        Departments department23 = new Departments("Кафедра сестринского дела"
+                , coordinates = new Coordinates(Constants.NURSE.latitude
+                , Constants.NURSE.longitude));
+        Departments department24 = new Departments("Кафедра терапии общей практики с курсом семейной медицины"
+                , coordinates = new Coordinates(Constants.FAMILY_MEDICINE.latitude
+                , Constants.FAMILY_MEDICINE.longitude));
+        Departments department25 = new Departments("Кафедра травматологии, ортопедии и экстремальной хирургии"
+                , coordinates = new Coordinates(Constants.TRAUMATOLOGY.latitude
+                , Constants.TRAUMATOLOGY.longitude));
+        Departments department26 = new Departments("Кафедра терапевтической стоматологии"
+                , coordinates = new Coordinates(Constants.NURSE.latitude
+                , Constants.NURSE.longitude));
+        Departments department27 = new Departments("Кафедра урологии и андрологии до- и последипломного обучения"
+                , coordinates = new Coordinates(Constants.UROLOGY.latitude
+                , Constants.UROLOGY.longitude));
+        Departments department28 = new Departments("Кафедра факультетской терапии (НЦКиТ)"
+                , coordinates = new Coordinates(Constants.FACULTY_THERAPY.latitude
+                , Constants.FACULTY_THERAPY.longitude));
+        Departments department29 = new Departments("Кафедра факультетской педиатрии"
+                , coordinates = new Coordinates(Constants.FACULTY_PEDIATRICS.latitude
+                , Constants.FACULTY_PEDIATRICS.longitude));
+        Departments department30 = new Departments("Кафедра факультетской хирургии"
+                , coordinates = new Coordinates(Constants.FAC_SURGERY.latitude
+                , Constants.FAC_SURGERY.longitude));
+        Departments department31 = new Departments("Кафедра фтизиатрии"
+                , coordinates = new Coordinates(Constants.TB.latitude
+                , Constants.TB.longitude));
+        Departments department32 = new Departments("Кафедра хирургии общей практики с курсом комбустиологии"
+                , coordinates = new Coordinates(Constants.SURGERY_COMBUST.latitude
+                , Constants.SURGERY_COMBUST.longitude));
+        Departments department33 = new Departments("Кафедра хирургической стоматологии и челюстно - лицевой хирургии"
+                , coordinates = new Coordinates(Constants.NURSE.latitude
+                , Constants.NURSE.longitude));
+
+        Departments department34 = new Departments("Морфологический корпус"
+                , coordinates = new Coordinates(Constants.PATHOPHYSILOGY_COORDINATES.latitude
+                , Constants.PATHOPHYSILOGY_COORDINATES.longitude));
+        Departments department35 = new Departments("Главный корпус"
+                , coordinates = new Coordinates(Constants.PHYSIOLOGY_COORDINATES.latitude
+                , Constants.PHYSIOLOGY_COORDINATES.longitude));
+        Departments department36 = new Departments("Четвертый корпус"
+                , coordinates = new Coordinates(Constants.FOURTH_CORPUS_COORDINATES.latitude
+                , Constants.FOURTH_CORPUS_COORDINATES.longitude));
+
         databaseReference.push().setValue(department);
+        databaseReference.push().setValue(department1);
+        databaseReference.push().setValue(department2);
+        databaseReference.push().setValue(department3);
+        databaseReference.push().setValue(department4);
+        databaseReference.push().setValue(department5);
+        databaseReference.push().setValue(department6);
+        databaseReference.push().setValue(department7);
+        databaseReference.push().setValue(department8);
+        databaseReference.push().setValue(department9);
+        databaseReference.push().setValue(department10);
+        databaseReference.push().setValue(department11);
+        databaseReference.push().setValue(department12);
+        databaseReference.push().setValue(department13);
+        databaseReference.push().setValue(department14);
+        databaseReference.push().setValue(department15);
+        databaseReference.push().setValue(department16);
+        databaseReference.push().setValue(department17);
+        databaseReference.push().setValue(department18);
+        databaseReference.push().setValue(department19);
+        databaseReference.push().setValue(department20);
+        databaseReference.push().setValue(department21);
+        databaseReference.push().setValue(department22);
+        databaseReference.push().setValue(department23);
+        databaseReference.push().setValue(department24);
+        databaseReference.push().setValue(department25);
+        databaseReference.push().setValue(department26);
+        databaseReference.push().setValue(department27);
+        databaseReference.push().setValue(department28);
+        databaseReference.push().setValue(department29);
+        databaseReference.push().setValue(department30);
+        databaseReference.push().setValue(department31);
+        databaseReference.push().setValue(department32);
+        databaseReference.push().setValue(department33);
+        databaseReference.push().setValue(department34);
+        databaseReference.push().setValue(department35);
+        databaseReference.push().setValue(department36);*/
 
         onClickListener = new View.OnClickListener() {
             @Override
