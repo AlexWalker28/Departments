@@ -2,7 +2,6 @@ package com.example.alexw.departments;
 
 
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.net.Uri;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -11,7 +10,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.OrientationEventListener;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -25,6 +23,14 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -34,6 +40,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private PopupMenu popup;
     private MenuItem mapTypeHybridMenuItem;
     private AutoCompleteTextView autoCompleteTextView;
+    private ArrayAdapter<String> arrayAdapter;
+    private ArrayList<Departments> departmentsData;
+    private ArrayList<String> autoCompleteTextViewData;
+    private ArrayList<LatLng> markersData;
+    private Coordinates coordinates;
+
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference databaseReference;
 
 
     Marker army;
@@ -89,6 +103,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference().child("Departments");
+
 
         cleanButton = (Button) findViewById(R.id.cleanButton);
         actionbar = (ImageButton)findViewById(R.id.actionbarImageButton);
@@ -99,6 +116,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapTypeHybridMenuItem = popup.getMenu().findItem(R.id.map_type_hybrid_menu_item);
 
 
+        Departments department = new Departments("Кафедра анестезиологии, реанимации и интенсивной терапии"
+                 , coordinates = new Coordinates(Constants.ANESTHESIOLOGY_COORDINATES.latitude
+                 , Constants.ANESTHESIOLOGY_COORDINATES.longitude));
+        databaseReference.push().setValue(department);
 
         onClickListener = new View.OnClickListener() {
             @Override
@@ -139,10 +160,41 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.departmentsArray
-                                                                                 , android.R.layout.simple_dropdown_item_1line);
+        departmentsData = new ArrayList<>();
+        autoCompleteTextViewData = new ArrayList<>();
+
+        databaseReference.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Departments departments = dataSnapshot.getValue(Departments.class);
+                departmentsData.add(departments);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        arrayAdapter = new ArrayAdapter<String>(MapsActivity.this, R.layout.support_simple_spinner_dropdown_item
+                                                                 , autoCompleteTextViewData);
         autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
-        autoCompleteTextView.setAdapter(adapter);
+        autoCompleteTextView.setAdapter(arrayAdapter);
         autoCompleteTextView.setThreshold(1);
 
 

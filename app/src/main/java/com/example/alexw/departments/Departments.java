@@ -3,22 +3,22 @@ package com.example.alexw.departments;
 import com.google.android.gms.maps.model.LatLng;
 
 
-public class Department {
-    public Department() {}
+public class Departments {
+    public Departments() {}
 
     private String name;
-    private LatLng latLng;
+    private Coordinates latLng;
 
-    public Department(String name, LatLng latLng){
+    public Departments(String name, Coordinates latLng){
         this.name = name;
         this.latLng = latLng;
     }
 
-
     public String getName() {
         return this.name;
     }
-    public LatLng getLatLng(){
+
+    public Coordinates getLatLng(){
         return this.latLng;
     }
 
