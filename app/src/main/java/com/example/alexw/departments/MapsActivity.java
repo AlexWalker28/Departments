@@ -45,7 +45,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private ArrayList<Departments> departmentsData;
     private ArrayList<String> autoCompleteTextViewData;
     private ArrayList<LatLng> markersData;
-    private Coordinates coordinates;
 
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
@@ -115,163 +114,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         MenuInflater inflater = popup.getMenuInflater();
         inflater.inflate(R.menu.actionbar_menu, popup.getMenu());
         mapTypeHybridMenuItem = popup.getMenu().findItem(R.id.map_type_hybrid_menu_item);
-
-
-
-        /*Departments department34 = new Departments("Морфологический корпус"
-                , Constants.PATHOPHYSILOGY_COORDINATES.latitude
-                , Constants.PATHOPHYSILOGY_COORDINATES.longitude);
-        Departments department35 = new Departments("Главный корпус"
-                ,Constants.PHYSIOLOGY_COORDINATES.latitude
-                , Constants.PHYSIOLOGY_COORDINATES.longitude);
-
-        final Departments department36 = new Departments("Четвертый корпус", Constants.PHYSIOLOGY_COORDINATES.latitude, Constants.PHYSIOLOGY_COORDINATES.longitude);
-        databaseReference.push().setValue(department34);
-        databaseReference.push().setValue(department35);
-        databaseReference.push().setValue(department36);
-
-        Departments department = new Departments("Кафедра военно - медицинской подготовки и экстремальной медицины"
-                ,Constants.ARMY.latitude
-                , Constants.ARMY.longitude);
-        Departments department1 = new Departments("Кафедра акушерства и гинекологии №1"
-                , Constants.OBSTETRICS_AND_GYNECOLOGY_1_COORDINATES.latitude
-                , Constants.OBSTETRICS_AND_GYNECOLOGY_1_COORDINATES.longitude);
-        Departments department2 = new Departments("Кафедра акушерства и гинекологии №2"
-                , Constants.OBSTETRICS_AND_GYNECOLOGY_2_COORDINATES.latitude
-                , Constants.OBSTETRICS_AND_GYNECOLOGY_2_COORDINATES.longitude);
-        Departments department3 = new Departments("Кафедра анестезиологии, реанимации и интенсивной терапии"
-                , Constants.ANESTHESIOLOGY_COORDINATES.latitude
-                , Constants.ANESTHESIOLOGY_COORDINATES.longitude);
-        Departments department4 = new Departments("Кафедра госпитальной терапии, профпатологии с курсом гематологии"
-                , Constants.HAEMATOLOGY.latitude
-                , Constants.HAEMATOLOGY.longitude);
-        Departments department5 = new Departments("Кафедра госпитальной педиатрии с курсом неонатологии"
-                , Constants.HOSPITAL_PEDIATRICS_AND_NEONATOLOGY.latitude
-                , Constants.HOSPITAL_PEDIATRICS_AND_NEONATOLOGY.longitude);
-        Departments department6 = new Departments("Кафедра госпитальной хирургии с курсом оперативной хирургии им. академика М.М. Мамакеева"
-                , Constants.MAMAKEEV.latitude
-                , Constants.MAMAKEEV.longitude);
-        Departments department7 = new Departments("Кафедра детских инфекционных болезней"
-                , Constants.INFECT_CHILD.latitude
-                , Constants.INFECT_CHILD.longitude);
-        Departments department8 = new Departments("Кафедра дерматовенерологии"
-                , Constants.DERMATOVEN.latitude
-                , Constants.DERMATOVEN.longitude);
-        Departments department9 = new Departments("Кафедра детской хирургии"
-                , Constants.CHILD_SURGERY.latitude
-                , Constants.CHILD_SURGERY.longitude);
-        Departments department10 = new Departments("Кафедра детской стоматологии"
-                , Constants.NURSE.latitude
-                , Constants.NURSE.longitude);
-        Departments department11 = new Departments("Кафедра инфекционных болезней"
-                , Constants.INFECTION.latitude
-                , Constants.INFECTION.longitude);
-        Departments department12 = new Departments("Кафедра лучевой диагностики и терапии"
-                , Constants.ROENTGENOLOGY.latitude
-                , Constants.ROENTGENOLOGY.longitude);
-        Departments department13 = new Departments("Кафедра неврологии с курсом медицинской генетики"
-                , Constants.NEUROLOGY.latitude
-                , Constants.NEUROLOGY.longitude);
-        Departments department14 = new Departments("Кафедра нейрохирургии до дипломного и последипломного образования"
-                , Constants.NEUROSURGERY.latitude
-                , Constants.NEUROSURGERY.longitude);
-        Departments department15 = new Departments("Кафедра онкологии"
-                , Constants.ONCOLOGY.latitude
-                , Constants.ONCOLOGY.longitude);
-        Departments department16 = new Departments("Кафедра оториноларингологии"
-                , Constants.OTORHINOLARYNGOLOGY_COORDINATES.latitude
-                , Constants.OTORHINOLARYNGOLOGY_COORDINATES.longitude);
-        Departments department17 = new Departments("Кафедра офтальмологии"
-                , Constants.OPHTHALMOLOGY_COORDINATES.latitude
-                , Constants.OPHTHALMOLOGY_COORDINATES.longitude);
-        Departments department18 = new Departments("Кафедра ортопедической стоматологии"
-                , Constants.NURSE.latitude
-                , Constants.NURSE.longitude);
-        Departments department19 = new Departments("Кафедра пропедевтики внутренних болезней с курсом эндокринологии"
-                , Constants.ENDOCRINOLOGY.latitude
-                , Constants.ENDOCRINOLOGY.longitude);
-        Departments department20 = new Departments("Кафедра пропедевтики детских болезней"
-                , Constants.PROPED_PEDIATRICS.latitude
-                , Constants.PROPED_PEDIATRICS.longitude);
-        Departments department21 = new Departments("Кафедра пропедхирургии"
-                , Constants.PROPED_SURGERY.latitude
-                , Constants.PROPED_SURGERY.longitude);
-        Departments department22 = new Departments("Кафедра психиатрии, психотерапии и наркологии"
-                , Constants.PSYCHIATRY.latitude
-                , Constants.PSYCHIATRY.longitude);
-        Departments department23 = new Departments("Кафедра сестринского дела"
-                , Constants.NURSE.latitude
-                , Constants.NURSE.longitude);
-        Departments department24 = new Departments("Кафедра терапии общей практики с курсом семейной медицины"
-                , Constants.FAMILY_MEDICINE.latitude
-                , Constants.FAMILY_MEDICINE.longitude);
-        Departments department25 = new Departments("Кафедра травматологии, ортопедии и экстремальной хирургии"
-                , Constants.TRAUMATOLOGY.latitude
-                , Constants.TRAUMATOLOGY.longitude);
-        Departments department26 = new Departments("Кафедра терапевтической стоматологии"
-                , Constants.NURSE.latitude
-                , Constants.NURSE.longitude);
-        Departments department27 = new Departments("Кафедра урологии и андрологии до- и последипломного обучения"
-                , Constants.UROLOGY.latitude
-                , Constants.UROLOGY.longitude);
-        Departments department28 = new Departments("Кафедра факультетской терапии (НЦКиТ)"
-                , Constants.FACULTY_THERAPY.latitude
-                , Constants.FACULTY_THERAPY.longitude);
-        Departments department29 = new Departments("Кафедра факультетской педиатрии"
-                , Constants.FACULTY_PEDIATRICS.latitude
-                , Constants.FACULTY_PEDIATRICS.longitude);
-        Departments department30 = new Departments("Кафедра факультетской хирургии"
-                , Constants.FAC_SURGERY.latitude
-                , Constants.FAC_SURGERY.longitude);
-        Departments department31 = new Departments("Кафедра фтизиатрии"
-                , Constants.TB.latitude
-                , Constants.TB.longitude);
-        Departments department32 = new Departments("Кафедра хирургии общей практики с курсом комбустиологии"
-                , Constants.SURGERY_COMBUST.latitude
-                , Constants.SURGERY_COMBUST.longitude);
-        Departments department33 = new Departments("Кафедра хирургической стоматологии и челюстно - лицевой хирургии"
-                , Constants.NURSE.latitude
-                , Constants.NURSE.longitude);
-
-
-
-
-        databaseReference.push().setValue(department);
-        databaseReference.push().setValue(department1);
-        databaseReference.push().setValue(department2);
-        databaseReference.push().setValue(department3);
-        databaseReference.push().setValue(department4);
-        databaseReference.push().setValue(department5);
-        databaseReference.push().setValue(department6);
-        databaseReference.push().setValue(department7);
-        databaseReference.push().setValue(department8);
-        databaseReference.push().setValue(department9);
-        databaseReference.push().setValue(department10);
-        databaseReference.push().setValue(department11);
-        databaseReference.push().setValue(department12);
-        databaseReference.push().setValue(department13);
-        databaseReference.push().setValue(department14);
-        databaseReference.push().setValue(department15);
-        databaseReference.push().setValue(department16);
-        databaseReference.push().setValue(department17);
-        databaseReference.push().setValue(department18);
-        databaseReference.push().setValue(department19);
-        databaseReference.push().setValue(department20);
-        databaseReference.push().setValue(department21);
-        databaseReference.push().setValue(department22);
-        databaseReference.push().setValue(department23);
-        databaseReference.push().setValue(department24);
-        databaseReference.push().setValue(department25);
-        databaseReference.push().setValue(department26);
-        databaseReference.push().setValue(department27);
-        databaseReference.push().setValue(department28);
-        databaseReference.push().setValue(department29);
-        databaseReference.push().setValue(department30);
-        databaseReference.push().setValue(department31);
-        databaseReference.push().setValue(department32);
-        databaseReference.push().setValue(department33);*/
-
-
 
         onClickListener = new View.OnClickListener() {
             @Override
@@ -383,15 +225,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.getUiSettings().setMyLocationButtonEnabled(true);
 
 
-        /*LatLng mortuary = Constants.PATHOPHYSILOGY_COORDINATES;
-        mortuaryMarker = mMap.addMarker(new MarkerOptions().position(mortuary).title(getString(R.string.mortuary_title)));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mortuary, 17));
 
-        LatLng physiology = Constants.PHYSIOLOGY_COORDINATES;
-        mainCorp = mMap.addMarker(new MarkerOptions().position(physiology).title(getString(R.string.main_corp)));
 
-        final LatLng fourthCorpus = Constants.FOURTH_CORPUS_COORDINATES;
-        fourthCorp = mMap.addMarker(new MarkerOptions().position(fourthCorpus).title(getString(R.string.fourth_corpus)));*/
 
 
 
@@ -408,12 +243,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
 
-        /*for (Departments department : departmentsData){
-            LatLng latLngCoordinates = coordinates.convertCoordinatesToLanLng(department.getLatLng());
-            mMap.addMarker(new MarkerOptions().position(latLngCoordinates).title(department.getName()));
-        }*/
 
-        /*army = mMap.addMarker(new MarkerOptions().position(coordinates.convertCoordinatesToLanLng(markersData.get(0))).title(departmentsData.get(0).getName()));*/
 
         departmentsData = new ArrayList<>();
         autoCompleteTextViewData = new ArrayList<>();
@@ -462,48 +292,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
 
-
-
-
-
-
-        /*army = mMap.addMarker(new MarkerOptions().position(Constants.ARMY).title("Кафедра военно - медицинской подготовки и экстремальной медицины"));
-        obsGyn1 = mMap.addMarker(new MarkerOptions().position(Constants.OBSTETRICS_AND_GYNECOLOGY_1_COORDINATES).title(getString(R.string.obstetrics_and_gynecology1_title)));
-        obsGyn2 = mMap.addMarker(new MarkerOptions().position(Constants.OBSTETRICS_AND_GYNECOLOGY_2_COORDINATES).title(getString(R.string.obstetrics_and_gynecology2_title)));
-        anest = mMap.addMarker(new MarkerOptions().position(Constants.ANESTHESIOLOGY_COORDINATES).title("Кафедра анестезиологии, реанимации и интенсивной терапии"));
-        otorhin = mMap.addMarker(new MarkerOptions().position(Constants.OTORHINOLARYNGOLOGY_COORDINATES).title("Кафедра оториноларингологии"));
-        ophtalm = mMap.addMarker(new MarkerOptions().position(Constants.OPHTHALMOLOGY_COORDINATES).title("Кафедра офтальмологии"));
-        roentg = mMap.addMarker(new MarkerOptions().position(Constants.ROENTGENOLOGY).title("Кафедра лучевой диагностики и терапии"));
-        neurol = mMap.addMarker(new MarkerOptions().position(Constants.NEUROLOGY).title("Кафедра неврологии с курсом медицинской генетики"));
-        edocr = mMap.addMarker(new MarkerOptions().position(Constants.ENDOCRINOLOGY).title("Кафедра пропедевтики внутренних болезней с курсом эндокринологии"));
-        propPed = mMap.addMarker(new MarkerOptions().position(Constants.PROPED_PEDIATRICS).title("Кафедра пропедевтики детских болезней"));
-        psych = mMap.addMarker(new MarkerOptions().position(Constants.PSYCHIATRY).title("Кафедра психиатрии, психотерапии и наркологии"));
-        nurse = mMap.addMarker(new MarkerOptions().position(Constants.NURSE).title("Стоматологический центр"));
-        family = mMap.addMarker(new MarkerOptions().position(Constants.FAMILY_MEDICINE).title("Кафедра терапии общей практики с курсом семейной медицины"));
-        trauma = mMap.addMarker(new MarkerOptions().position(Constants.TRAUMATOLOGY).title("Кафедра травматологии, ортопедии и экстремальной хирургии"));
-        urol = mMap.addMarker(new MarkerOptions().position(Constants.UROLOGY).title("Кафедра урологии и андрологии до- и последипломного обучения"));
-        hospThera = mMap.addMarker(new MarkerOptions().position(Constants.HOSPITAL_THERAPY).title("Кафедра госпитальной терапии, профпатологии с курсом гематологии"));
-        haema = mMap.addMarker(new MarkerOptions().position(Constants.HAEMATOLOGY).title("Центр гематологии"));
-        neonat = mMap.addMarker(new MarkerOptions().position(Constants.HOSPITAL_PEDIATRICS_AND_NEONATOLOGY).title("Кафедра госпитальной педиатрии с курсом неонатологии"));
-        facThera = mMap.addMarker(new MarkerOptions().position(Constants.FACULTY_THERAPY).title("Кафедра факультетской терапии (НЦКиТ)"));
-        facTheraCard = mMap.addMarker(new MarkerOptions().position(Constants.FACULTY_THERAPY_POLICLINIC).title("Кафедра факультетской терапии (поликлиника)"));
-
-
-        propSurg = mMap.addMarker(new MarkerOptions().position(Constants.PROPED_SURGERY).title("Кафедра пропедхирургии"));
-        facPed = mMap.addMarker(new MarkerOptions().position(Constants.FACULTY_PEDIATRICS).title("Кафедра факультетской педиатрии"));
-        surgComb = mMap.addMarker(new MarkerOptions().position(Constants.SURGERY_COMBUST).title("Кафедра хирургии общей практики с курсом комбустиологии"));
-        tb = mMap.addMarker(new MarkerOptions().position(Constants.TB).title("Кафедра фтизиатрии"));
-        mamakeev = mMap.addMarker(new MarkerOptions().position(Constants.MAMAKEEV).title("Кафедра госпитальной хирургии с курсом оперативной хирургии им. академика М.М. Мамакеева"));
-        infect = mMap.addMarker(new MarkerOptions().position(Constants.INFECTION).title("Кафедра инфекционных болезней"));
-        facSurg = mMap.addMarker(new MarkerOptions().position(Constants.FAC_SURGERY).title("Кафедра факультетской хирургии"));
-
-        neurosurg = mMap.addMarker(new MarkerOptions().position(Constants.NEUROSURGERY).title("Кафедра нейрохирургии до дипломного и последипломного образования"));
-        infectChild = mMap.addMarker(new MarkerOptions().position(Constants.INFECT_CHILD).title("Кафедра детских инфекционных болезней"));
-        dermatoVen = mMap.addMarker(new MarkerOptions().position(Constants.DERMATOVEN).title("Кафедра дерматовенерологии"));
-        childSurgery = mMap.addMarker(new MarkerOptions().position(Constants.CHILD_SURGERY).title("Кафедра детской хирургии"));
-        oncology = mMap.addMarker(new MarkerOptions().position(Constants.ONCOLOGY).title("Кафедра онкологии"));*/
-
-
         TextWatcher textWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -512,6 +300,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+
 
                 /*switch (charSequence.toString()) {
                     case "Кафедра патологической физиологии":
