@@ -44,13 +44,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private ArrayAdapter<String> arrayAdapter;
     private ArrayList<Departments> departmentsData;
     private ArrayList<String> autoCompleteTextViewData;
-    private ArrayList<LatLng> markersData;
 
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
 
 
-    Marker army;
+    /*Marker army;
     Marker obsGyn1;
     Marker obsGyn2;
     Marker anest;
@@ -88,7 +87,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     Marker fourthCorp;
     Marker mainCorp;
-    Marker mortuaryMarker;
+    Marker mortuaryMarker;*/
 
 
     View.OnClickListener onClickListener;
@@ -158,11 +157,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
 
-        arrayAdapter = new ArrayAdapter<>(MapsActivity.this, R.layout.support_simple_spinner_dropdown_item
-                                                                  , autoCompleteTextViewData);
-        autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
-        autoCompleteTextView.setAdapter(arrayAdapter);
-        autoCompleteTextView.setThreshold(1);
+
 
 
         /*OrientationEventListener orientationEventListener = new OrientationEventListener(getApplication()) {
@@ -243,25 +238,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
 
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.PATHOPHYSILOGY_COORDINATES, 17));
 
 
         departmentsData = new ArrayList<>();
         autoCompleteTextViewData = new ArrayList<>();
-        markersData = new ArrayList<>();
         databaseReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Departments departments = dataSnapshot.getValue(Departments.class);
-                LatLng coordinates = new LatLng(departments.getLat(), departments.getLng());
-                markersData.add(coordinates);
                 departmentsData.add(departments);
                 autoCompleteTextViewData.add(departments.getName());
 
                 for (Departments department : departmentsData){
                     LatLng latLng = new LatLng(department.getLat(), department.getLng());
-                    Marker marker = mMap.addMarker(new MarkerOptions().position(latLng).title(department.getName()));
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(marker.getPosition(), 17));
-                    marker.showInfoWindow();
+                    mMap.addMarker(new MarkerOptions().position(latLng).title(department.getName()));
                 }
 
             }
@@ -287,8 +278,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
 
-
-
+        arrayAdapter = new ArrayAdapter<>(MapsActivity.this, R.layout.support_simple_spinner_dropdown_item
+                , autoCompleteTextViewData);
+        autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
+        autoCompleteTextView.setAdapter(arrayAdapter);
+        autoCompleteTextView.setThreshold(1);
 
 
 
@@ -301,7 +295,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-
+                for (Departments department : departmentsData){
+                    if (department.getName() == charSequence.toString()){
+                        LatLng coordinates = new LatLng(department.getLat(), department.getLng());
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(coordinates, 17));
+                    }
+                }
 
                 /*switch (charSequence.toString()) {
                     case "Кафедра патологической физиологии":
