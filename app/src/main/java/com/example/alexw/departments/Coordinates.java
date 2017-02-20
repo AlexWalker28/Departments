@@ -1,8 +1,7 @@
 package com.example.alexw.departments;
 
-/**
- * Created by alexw on 18.02.2017.
- */
+import com.google.android.gms.maps.model.LatLng;
+
 
 public class Coordinates {
 
@@ -30,6 +29,10 @@ public class Coordinates {
 
     public void setLng(double lng) {
         this.lng = lng;
+    }
+
+    public LatLng convertCoordinatesToLanLng(Coordinates coordinates){
+        return new LatLng(coordinates.getLat(), coordinates.getLng());
     }
 
 }

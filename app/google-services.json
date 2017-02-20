@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "836005180177-or0i9m016qfs8cuml6l3f7hqm91eiflg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.alexwalker.departments",
+            "certificate_hash": "C44235B346230743B083E1B85A4354E0A571F7F4"
+          }
+        },
+        {
           "client_id": "836005180177-st491na19ul2uvdcm87p0i4e53l8v68r.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
