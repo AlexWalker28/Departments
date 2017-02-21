@@ -76,6 +76,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 switch (view.getId()) {
                     case R.id.cleanButton:
                         autoCompleteTextView.setText("");
+                        break;
                     case R.id.actionbarImageButton:
                         popup.show();
                         break;
