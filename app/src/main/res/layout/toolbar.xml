@@ -15,10 +15,9 @@
             android:id="@+id/actionbarImageButton"
             android:background="@drawable/ic_action_name"
             android:layout_gravity="end"
-            android:layout_marginEnd="@dimen/activity_vertical_margin"
-            style="@style/Widget.AppCompat.Light.ActionBar" />
+            android:layout_marginEnd="@dimen/activity_vertical_margin" />
 
-        <TextView
+        <!--<TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -28,6 +27,13 @@
             android:gravity="center_vertical"
             android:layout_column="0"
             android:layout_weight="1"
-            android:layout_marginStart="5dp"/>
+            android:layout_marginStart="5dp"/>-->
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/spinner"
+            android:layout_gravity="start"
+            style="@style/AlertDialog.AppCompat.Light"/>
     </android.support.v7.widget.Toolbar>
+
 </LinearLayout>

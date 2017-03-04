@@ -11,10 +11,12 @@ import android.text.TextWatcher;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -44,6 +46,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private ArrayAdapter<String> arrayAdapter;
     private ArrayList<Departments> departmentsData;
     private ArrayList<String> autoCompleteTextViewData;
+    private ArrayAdapter<CharSequence> spinnerAdapter;
+    private Spinner spinner;
     private View.OnClickListener onClickListener;
 
     private FirebaseDatabase firebaseDatabase;
@@ -64,6 +68,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         cleanButton = (Button) findViewById(R.id.cleanButton);
         actionbar = (ImageButton)findViewById(R.id.actionbarImageButton);
+        spinner = (Spinner)findViewById(R.id.spinner);
 
         popup = new PopupMenu(MapsActivity.this, actionbar);
         MenuInflater inflater = popup.getMenuInflater();
@@ -108,6 +113,29 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 return true;
             }
         });
+
+        spinnerAdapter = ArrayAdapter.createFromResource(this, R.array.spinnerData, R.layout.spinner_item);
+        spinnerAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
+        spinner.setAdapter(spinnerAdapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                switch (i){
+                    case 1: //schedule
+                        Intent intent = new Intent(MapsActivity.this, ScheduleActivity.class);
+                        startActivity(intent);
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
 
         /*OrientationEventListener orientationEventListener = new OrientationEventListener(getApplication()) {
             @Override

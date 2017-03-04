@@ -35,7 +35,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value= "AIzaSyAgawZF0PfNeBu1JahJtaTpkW9h6qMzijs" />
+            android:value="AIzaSyAgawZF0PfNeBu1JahJtaTpkW9h6qMzijs" />
 
         <activity android:name=".SplashScreen">
             <intent-filter>
@@ -55,11 +55,14 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <!--<activity android:name=".Timetable" >
+        <!--
+            <activity android:name=".Timetable" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
                 </intent-filter>
-            </activity> -->
+            </activity>
+        -->
+        <activity android:name=".ScheduleActivity"></activity>
     </application>
 
 </manifest>

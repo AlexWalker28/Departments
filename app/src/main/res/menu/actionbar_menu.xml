@@ -3,7 +3,7 @@
 
     <item android:title="@string/map_type_hybrid"
         android:id="@+id/map_type_hybrid_menu_item"
-        android:checkable="true" />
+        android:checkable="true"/>
 
     <item android:title="@string/mistake_button"
         android:id="@+id/mistake_report_menu_item" />

@@ -79,4 +79,8 @@
         <item>Кафедра хирургической стоматологии и челюстно - лицевой хирургии</item>
 
     </string-array>
+    <string-array name="spinnerData">
+        <item>Кафедры КГМА</item>
+        <item>Расписание</item>
+    </string-array>
 </resources>

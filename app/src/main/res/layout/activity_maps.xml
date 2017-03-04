@@ -30,6 +30,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#FFFFFF"
+            android:paddingStart="@dimen/activity_vertical_margin"
             android:hint="@string/departments"/>
 
         <Button

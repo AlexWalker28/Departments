@@ -74,6 +74,11 @@
         <item>Кафедра хирургической стоматологии и челюстно - лицевой хирургии</item>
 
     </string-array>
+
+    <string-array name="spinnerData">
+        <item>Кафедры КГМА</item>
+        <item>Расписание</item>
+    </string-array>
     <string name="main_corp">Main thing</string>
     <string name="fourth_corpus">Fourth corpus</string>
     <string name="departments_list">Department\'s list</string>
