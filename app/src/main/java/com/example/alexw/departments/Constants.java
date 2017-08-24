@@ -6,7 +6,7 @@ import com.google.android.gms.maps.model.LatLng;
 public class Constants {
 
 
-    public static final int SPLASH_ACTIVITY_LENGTH = 1000;
+    public static final int SPLASH_ACTIVITY_LENGTH = 500;
 
 
     public static final LatLng PHYSIOLOGY_COORDINATES = new LatLng(42.842406, 74.607076);

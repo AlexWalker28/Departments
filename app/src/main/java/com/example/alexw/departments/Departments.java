@@ -4,9 +4,17 @@ import com.google.android.gms.maps.model.LatLng;
 
 
 public class Departments {
+    private String name;
+    private double lat;
+    private double lng;
+
     public Departments() {}
 
-    private String name;
+    public Departments(String name, double latitude, double longitude){
+        this.name = name;
+        this.lat = latitude;
+        this.lng = longitude;
+    }
 
     public double getLat() {
         return lat;
@@ -22,15 +30,6 @@ public class Departments {
 
     public void setLng(double lng) {
         this.lng = lng;
-    }
-
-    private double lat;
-    private double lng;
-
-    public Departments(String name, double latitude, double longitude){
-        this.name = name;
-        this.lat = latitude;
-        this.lng = longitude;
     }
 
     public String getName() {

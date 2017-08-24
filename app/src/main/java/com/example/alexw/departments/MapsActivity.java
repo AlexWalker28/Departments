@@ -3,20 +3,17 @@ package com.example.alexw.departments;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.PopupMenu;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.ImageButton;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -35,12 +32,14 @@ import java.util.ArrayList;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
+    private static final String TAG = "MapsActivity";
     private GoogleMap mMap;
     private Button cleanButton;
     private AutoCompleteTextView autoCompleteTextView;
     private ArrayAdapter<String> arrayAdapter;
-    private ArrayList<Departments> departmentsData;
+    private ArrayList<Departments> departmentsArrayList;
     private ArrayList<String> autoCompleteTextViewData;
+    private ArrayList<Marker> markerArrayList;
 
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
@@ -167,18 +166,20 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.PATHOPHYSILOGY_COORDINATES, 17));
 
-        departmentsData = new ArrayList<>();
+        departmentsArrayList = new ArrayList<>();
         autoCompleteTextViewData = new ArrayList<>();
+        markerArrayList = new ArrayList<>();
         databaseReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Departments departments = dataSnapshot.getValue(Departments.class);
-                departmentsData.add(departments);
+                departmentsArrayList.add(departments);
                 autoCompleteTextViewData.add(departments.getName());
 
-                for (Departments department : departmentsData){
+                for (Departments department : departmentsArrayList){
                     LatLng latLng = new LatLng(department.getLat(), department.getLng());
-                    mMap.addMarker(new MarkerOptions().position(latLng).title(department.getName()));
+                    Marker marker = mMap.addMarker(new MarkerOptions().position(latLng).title(department.getName()));
+                    markerArrayList.add(marker);
                 }
 
             }
@@ -219,13 +220,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-                for (Departments department : departmentsData) {
+                for (Departments department : departmentsArrayList) {
                     if (department.getName().equals(charSequence.toString())) {
                         LatLng coordinates = new LatLng(department.getLat(), department.getLng());
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(coordinates, 17));
-                        //костыль, чтобы отображать название кафедры над маркером
-                        Marker marker = mMap.addMarker(new MarkerOptions().position(coordinates).title(department.getName()));
-                        marker.showInfoWindow();
+                        showInfoWindowForMarker(department);
                         break;
                     }
                 }
@@ -241,6 +240,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         autoCompleteTextView.addTextChangedListener(textWatcher);
 
 
+    }
+
+    private void showInfoWindowForMarker(Departments department) {
+        for (Marker marker : markerArrayList){
+            if (marker.getPosition().latitude == department.getLat()){
+                marker.showInfoWindow();
+                break;
+            }
+        }
     }
 
 
