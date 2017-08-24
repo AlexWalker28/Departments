@@ -45,7 +45,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MapsActivity"
+            android:name=".MapsFragment"
             android:configChanges="orientation"
             android:label="@string/title_activity_maps">
             <intent-filter>
