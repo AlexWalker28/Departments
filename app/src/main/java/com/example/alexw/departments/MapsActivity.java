@@ -5,9 +5,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.PopupMenu;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,7 +17,6 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -31,23 +32,23 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private Button cleanButton;
-    private ImageButton actionbar;
-    private PopupMenu popup;
-    private MenuItem mapTypeHybridMenuItem;
     private AutoCompleteTextView autoCompleteTextView;
     private ArrayAdapter<String> arrayAdapter;
     private ArrayList<Departments> departmentsData;
     private ArrayList<String> autoCompleteTextViewData;
-    private View.OnClickListener onClickListener;
 
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
+    private static boolean isPersistent;
+
+    private MenuItem hybridMapTypeMenuItem;
+    private MenuItem reportMistakeMenuItem;
+    private MenuItem goKGMAMenuItem;
 
 
     @Override
@@ -60,53 +61,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
-        firebaseDatabase.setPersistenceEnabled(true);
+        if(!isPersistent) {
+            firebaseDatabase.setPersistenceEnabled(true);
+            isPersistent = true;
+        }
         databaseReference = firebaseDatabase.getReference().child("Departments");
 
         cleanButton = (Button) findViewById(R.id.cleanButton);
-        actionbar = (ImageButton)findViewById(R.id.actionbarImageButton);
 
-        popup = new PopupMenu(MapsActivity.this, actionbar);
-        MenuInflater inflater = popup.getMenuInflater();
-        inflater.inflate(R.menu.actionbar_menu, popup.getMenu());
-        mapTypeHybridMenuItem = popup.getMenu().findItem(R.id.map_type_hybrid_menu_item);
-
-        onClickListener = new View.OnClickListener() {
+        cleanButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                switch (view.getId()) {
-                    case R.id.cleanButton:
-                        autoCompleteTextView.setText("");
-                        break;
-                    case R.id.actionbarImageButton:
-                        popup.show();
-                        break;
-                }
-            }
-        };
-        cleanButton.setOnClickListener(onClickListener);
-        actionbar.setOnClickListener(onClickListener);
-
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.mistake_report_menu_item:
-                        sendMessage();
-                        break;
-                    case R.id.map_type_hybrid_menu_item:
-                        if(!item.isChecked() ){
-                            item.setChecked(true);
-                            mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-                        } else {
-                            item.setChecked(false);
-                            mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-                        }
-                        break;
-                    case R.id.kgma_item:
-                        goKGMA();
-                }
-                return true;
+            public void onClick(View v) {
+                autoCompleteTextView.setText("");
             }
         });
 
@@ -127,6 +93,36 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         };
         orientationEventListener.canDetectOrientation();
         orientationEventListener.enable();*/
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.actionbar_menu, menu);
+        hybridMapTypeMenuItem = menu.findItem(R.id.map_type_hybrid_menu_item);
+        reportMistakeMenuItem = menu.findItem(R.id.mistake_report_menu_item);
+        goKGMAMenuItem = menu.findItem(R.id.kgma_item);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.mistake_report_menu_item:
+                sendMessage();
+                break;
+            case R.id.map_type_hybrid_menu_item:
+                if(!item.isChecked() ){
+                    item.setChecked(true);
+                    mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                } else {
+                    item.setChecked(false);
+                    mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                }
+                break;
+            case R.id.kgma_item:
+                goKGMA();
+        }
+        return true;
     }
 
     private void sendMessage() {

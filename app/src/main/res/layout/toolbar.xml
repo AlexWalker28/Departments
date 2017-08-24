@@ -9,14 +9,6 @@
         android:background="@color/colorPrimary"
         android:id="@+id/toolbar">
 
-        <ImageButton
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:id="@+id/actionbarImageButton"
-            android:background="@drawable/ic_action_name"
-            android:layout_gravity="end"
-            android:layout_marginEnd="@dimen/activity_vertical_margin"
-            style="@style/Widget.AppCompat.Light.ActionBar" />
 
         <TextView
             android:id="@+id/textView"
@@ -28,6 +20,6 @@
             android:gravity="center_vertical"
             android:layout_column="0"
             android:layout_weight="1"
-            android:layout_marginStart="5dp"/>
+            android:layout_marginStart="16dp"/>
     </android.support.v7.widget.Toolbar>
 </LinearLayout>
