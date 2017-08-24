@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="@string/map_type_hybrid"
-        android:id="@+id/map_type_hybrid_menu_item"
-        android:checkable="true" />
+    <item android:id="@+id/map_type_hybrid_menu_item"
+        android:checkable="true"
+        android:title="@string/map_type_hybrid" />
 
-    <item android:title="@string/mistake_button"
-        android:id="@+id/mistake_report_menu_item" />
-    <item android:title="Однажды в КГМА"
-        android:id="@+id/kgma_item"
-        android:icon="@drawable/common_google_signin_btn_icon_light_normal" />
+    <item android:id="@+id/mistake_report_menu_item"
+        android:title="@string/mistake_button" />
+    <item android:id="@+id/kgma_item"
+        android:icon="@drawable/kgma"
+        android:title="Однажды в КГМА" />
 </menu>
