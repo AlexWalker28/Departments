@@ -33,7 +33,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
-public class MapsFragment extends Fragment implements OnMapReadyCallback {
+public class MapsFragment extends Fragment {
 
     private static final String TAG = "MapsFragment";
     private GoogleMap mMap;
@@ -48,9 +48,6 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
     private DatabaseReference databaseReference;
     private static boolean isPersistent;
 
-    private MenuItem hybridMapTypeMenuItem;
-    private MenuItem reportMistakeMenuItem;
-    private MenuItem goKGMAMenuItem;
     private View v;
     private MapView mapView;
 
@@ -169,72 +166,6 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
             }
         });
         return v;
-    }
-
-    /*@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.actionbar_menu, menu);
-        hybridMapTypeMenuItem = menu.findItem(R.id.map_type_hybrid_menu_item);
-        reportMistakeMenuItem = menu.findItem(R.id.mistake_report_menu_item);
-        goKGMAMenuItem = menu.findItem(R.id.kgma_item);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.mistake_report_menu_item:
-                sendMessage();
-                break;
-            case R.id.map_type_hybrid_menu_item:
-                if(!item.isChecked() ){
-                    item.setChecked(true);
-                    mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-                } else {
-                    item.setChecked(false);
-                    mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-                }
-                break;
-            case R.id.kgma_item:
-                goKGMA();
-        }
-        return true;
-    }
-
-
-    private void sendMessage() {
-        Intent sentMessage = new Intent(Intent.ACTION_SENDTO);
-        sentMessage.setData(Uri.parse("mailto:feedbackmessagetodeveloper@gmail.com"));
-        sentMessage.putExtra(Intent.EXTRA_SUBJECT, "Сообщение об ошибке");
-        if (sentMessage.resolveActivity(getActivity().getPackageManager()) != null) {
-            startActivity(sentMessage);
-        }
-    }
-
-    private void goKGMA() {
-        Intent goKGMA = new Intent(Intent.ACTION_VIEW);
-        goKGMA.setData(Uri.parse("https://vk.com/lovekgma"));
-        startActivity(goKGMA);
-    }
-    */
-
-
-
-
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
-
-
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-
     }
 
     private void showInfoWindowForMarker(Departments department) {
