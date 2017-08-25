@@ -10,9 +10,14 @@
             android:id="@+id/nav_second_fragment"
             android:title="@string/tab_title_books" />
 
-        <item android:id="@+id/map_type_switch_menu_item"
-            app:actionLayout="@layout/action_view_switch"
-            android:title="@string/map_type_hybrid" />
-
     </group>
+    <item android:title="@string/map_type">
+        <menu>
+            <group>
+                <item android:id="@+id/map_type_switch_menu_item"
+                    app:actionLayout="@layout/action_view_switch"
+                    android:title="@string/map_type_hybrid" />
+            </group>
+        </menu>
+    </item>
 </menu>

@@ -94,4 +94,5 @@
     </string-array>
     <string name="tab_title_departments">Кафедры</string>
     <string name="tab_title_books">Книги</string>
+    <string name="map_type">Map type</string>
 </resources>
