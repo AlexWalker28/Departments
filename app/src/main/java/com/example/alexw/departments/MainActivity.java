@@ -24,7 +24,6 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private MenuItem hybridMapTypeMenuItem;
     private MenuItem reportMistakeMenuItem;
     private MenuItem goKGMAMenuItem;
     private DrawerLayout drawerLayout;
@@ -105,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.actionbar_menu, menu);
-        hybridMapTypeMenuItem = menu.findItem(R.id.map_type_hybrid_menu_item);
         reportMistakeMenuItem = menu.findItem(R.id.mistake_report_menu_item);
         goKGMAMenuItem = menu.findItem(R.id.kgma_item);
         return true;
@@ -117,15 +115,6 @@ public class MainActivity extends AppCompatActivity {
             case R.id.mistake_report_menu_item:
                 sendMessage();
                 break;
-            /*case R.id.map_type_hybrid_menu_item:
-                if(!item.isChecked() ){
-                    item.setChecked(true);
-                    mMap.
-                } else {
-                    item.setChecked(false);
-                    mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-                }
-                break;*/
             case R.id.kgma_item:
                 goKGMA();
         }
