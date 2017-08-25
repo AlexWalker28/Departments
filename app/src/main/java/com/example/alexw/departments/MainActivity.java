@@ -60,6 +60,11 @@ public class MainActivity extends AppCompatActivity {
         drawerToggle = setupDrawerToggle();
         drawerLayout.addDrawerListener(drawerToggle);
 
+        handleMapTypeSwitch();
+
+    }
+
+    private void handleMapTypeSwitch() {
         Menu menu = navigationView.getMenu();
         MenuItem menuItem = menu.findItem(R.id.map_type_switch_menu_item);
         SwitchCompat switchCompat = (SwitchCompat) MenuItemCompat.getActionView(menuItem).findViewById(R.id.switch_compat);
@@ -76,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
                 drawerLayout.closeDrawers();
             }
         });
-
     }
 
     private ActionBarDrawerToggle setupDrawerToggle() {

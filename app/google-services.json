@@ -15,11 +15,19 @@
       },
       "oauth_client": [
         {
+          "client_id": "836005180177-em3ubqp925bbj4k695qrf4qvhfrhibim.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.alexwalker.departments",
+            "certificate_hash": "f08417a341d3e322bcff1ebb0befa31b53cecf2b"
+          }
+        },
+        {
           "client_id": "836005180177-or0i9m016qfs8cuml6l3f7hqm91eiflg.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.alexwalker.departments",
-            "certificate_hash": "C44235B346230743B083E1B85A4354E0A571F7F4"
+            "certificate_hash": "c44235b346230743b083e1b85a4354e0a571f7f4"
           }
         },
         {
@@ -27,7 +35,7 @@
           "client_type": 1,
           "android_info": {
             "package_name": "com.alexwalker.departments",
-            "certificate_hash": "AD381AA809AA1F930017A0A2A7FE81995089DBAE"
+            "certificate_hash": "ad381aa809aa1f930017a0a2a7fe81995089dbae"
           }
         },
         {
@@ -35,7 +43,7 @@
           "client_type": 1,
           "android_info": {
             "package_name": "com.alexwalker.departments",
-            "certificate_hash": "DB311974F8ED85E173DCB18D74C33A8F94065540"
+            "certificate_hash": "db311974f8ed85e173dcb18d74c33a8f94065540"
           }
         },
         {
