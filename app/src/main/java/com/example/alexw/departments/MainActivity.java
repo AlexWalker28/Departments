@@ -4,13 +4,17 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
+import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -18,7 +22,11 @@ public class MainActivity extends AppCompatActivity {
     private MenuItem hybridMapTypeMenuItem;
     private MenuItem reportMistakeMenuItem;
     private MenuItem goKGMAMenuItem;
-    private MapView mMap;
+    private DrawerLayout drawerLayout;
+    private ArrayList<String> drawerDataArrayList;
+    private ActionBarDrawerToggle drawerToggle;
+    private Toolbar toolbar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +39,14 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
         viewPager.setAdapter(adapter);
 
-       mMap = (MapView)findViewById(R.id.mapView);
+        drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        drawerDataArrayList = new ArrayList<>();
+        drawerDataArrayList.add("First item");
+        drawerDataArrayList.add("Second item");
+
 
 
     }
