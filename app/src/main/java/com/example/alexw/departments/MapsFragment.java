@@ -43,6 +43,7 @@ public class MapsFragment extends Fragment {
     private ArrayList<Departments> departmentsArrayList;
     private ArrayList<String> autoCompleteTextViewData;
     private ArrayList<Marker> markerArrayList;
+    private static LatLng userFocus;
 
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
@@ -88,7 +89,9 @@ public class MapsFragment extends Fragment {
                 mMap.getUiSettings().setZoomGesturesEnabled(true);
                 mMap.getUiSettings().setMyLocationButtonEnabled(true);
 
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.PATHOPHYSILOGY_COORDINATES, 17));
+                if(userFocus == null){
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.PATHOPHYSILOGY_COORDINATES, 17));
+                } else mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userFocus, 17));
 
                 departmentsArrayList = new ArrayList<>();
                 autoCompleteTextViewData = new ArrayList<>();
@@ -148,6 +151,7 @@ public class MapsFragment extends Fragment {
                             if (department.getName().equals(charSequence.toString())) {
                                 LatLng coordinates = new LatLng(department.getLat(), department.getLng());
                                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(coordinates, 17));
+                                userFocus = coordinates;
                                 showInfoWindowForMarker(department);
                                 break;
                             }
