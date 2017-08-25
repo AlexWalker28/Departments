@@ -83,6 +83,10 @@
     <string name="maps_api_debug_key" translatable="false">AIzaSyAgawZF0PfNeBu1JahJtaTpkW9h6qMzijs</string>
     <string name="maps_api_release_key" translatable="false">AIzaSyBuyQitM1K97_wI1H1-KJEOUxgecwsXjqk</string>
 
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+
+
     <!--Have to match-->
     <string-array name="tab_titles">
         <item>Кафедры</item>
