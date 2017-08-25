@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -40,6 +39,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private ArrayList<Departments> departmentsArrayList;
     private ArrayList<String> autoCompleteTextViewData;
     private ArrayList<Marker> markerArrayList;
+    private static LatLng userFocus;
 
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
@@ -133,7 +133,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap.getUiSettings().setZoomGesturesEnabled(true);
         mMap.getUiSettings().setMyLocationButtonEnabled(true);
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.PATHOPHYSILOGY_COORDINATES, 17));
+        if(userFocus == null){
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(Constants.PATHOPHYSILOGY_COORDINATES, 17));
+        } else mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userFocus, 17));
 
         departmentsArrayList = new ArrayList<>();
         autoCompleteTextViewData = new ArrayList<>();
@@ -193,6 +195,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     if (department.getName().equals(charSequence.toString())) {
                         LatLng coordinates = new LatLng(department.getLat(), department.getLng());
                         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(coordinates, 17));
+                        userFocus = coordinates;
                         showInfoWindowForMarker(department);
                         break;
                     }
