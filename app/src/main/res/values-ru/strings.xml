@@ -79,4 +79,11 @@
         <item>Кафедра хирургической стоматологии и челюстно - лицевой хирургии</item>
 
     </string-array>
+    <!--Have to match-->
+    <string-array name="tab_titles">
+        <item>Кафедры</item>
+        <item>Книги</item>
+    </string-array>
+    <string name="tab_title_departments">Кафедры</string>
+    <string name="tab_title_books">Книги</string>
 </resources>

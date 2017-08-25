@@ -2,13 +2,17 @@ package com.example.alexw.departments;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
@@ -26,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<String> drawerDataArrayList;
     private ActionBarDrawerToggle drawerToggle;
     private Toolbar toolbar;
+    private NavigationView navigationView;
+    private ViewPager viewPager;
+    private String [] tabTitlesArray;
 
 
     @Override
@@ -33,23 +40,46 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ViewPager viewPager = (ViewPager)findViewById(R.id.viewpager);
-        CustomFragmentPagerAdapter adapter = new CustomFragmentPagerAdapter(getSupportFragmentManager());
+        tabTitlesArray = getResources().getStringArray(R.array.tab_titles);
+
+        viewPager = (ViewPager)findViewById(R.id.viewpager);
+        CustomFragmentPagerAdapter adapter = new CustomFragmentPagerAdapter(getSupportFragmentManager(), tabTitlesArray);
         TabLayout tabLayout = (TabLayout)findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(viewPager);
         viewPager.setAdapter(adapter);
 
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        navigationView = (NavigationView)findViewById(R.id.navigation_view);
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        drawerDataArrayList = new ArrayList<>();
-        drawerDataArrayList.add("First item");
-        drawerDataArrayList.add("Second item");
-
+        setupDrawerContent(navigationView);
 
 
     }
+
+    private void setupDrawerContent(NavigationView navigationView) {
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                selectDrawerItem(item);
+                return true;
+            }
+        });
+    }
+
+    private void selectDrawerItem(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.nav_first_fragment:
+                viewPager.setCurrentItem(0, true);
+                break;
+            case R.id.nav_second_fragment:
+                viewPager.setCurrentItem(1, true);
+                break;
+        }
+        drawerLayout.closeDrawers();
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

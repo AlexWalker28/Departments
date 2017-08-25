@@ -83,6 +83,11 @@
     <string name="maps_api_debug_key" translatable="false">AIzaSyAgawZF0PfNeBu1JahJtaTpkW9h6qMzijs</string>
     <string name="maps_api_release_key" translatable="false">AIzaSyBuyQitM1K97_wI1H1-KJEOUxgecwsXjqk</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--Have to match-->
+    <string-array name="tab_titles">
+        <item>Кафедры</item>
+        <item>Книги</item>
+    </string-array>
+    <string name="tab_title_departments">Кафедры</string>
+    <string name="tab_title_books">Книги</string>
 </resources>

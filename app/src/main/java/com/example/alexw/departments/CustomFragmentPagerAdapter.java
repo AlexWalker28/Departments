@@ -1,5 +1,6 @@
 package com.example.alexw.departments;
 
+import android.content.res.Resources;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -10,10 +11,11 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 class CustomFragmentPagerAdapter extends FragmentPagerAdapter {
 
-    String [] pageTitlesArray = {"Кафедры", "Книги"};
+    private String [] pageTitlesArray;
 
-    public CustomFragmentPagerAdapter(FragmentManager fm) {
+    public CustomFragmentPagerAdapter(FragmentManager fm, String [] pageTitlesArray) {
         super(fm);
+        this.pageTitlesArray = pageTitlesArray;
     }
 
     @Override
