@@ -54,7 +54,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -75,23 +74,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         });
 
-        /*OrientationEventListener orientationEventListener = new OrientationEventListener(getApplication()) {
-            @Override
-            public void onOrientationChanged(int i) {
-                Configuration newConfig = new Configuration();
-                if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE
-                        && mMap.getMapType() == GoogleMap.MAP_TYPE_HYBRID) {
-                    mapTypeHybridMenuItem.setChecked(true);
-                } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT
-                        && mMap.getMapType() == GoogleMap.MAP_TYPE_HYBRID) {
-                    mapTypeHybridMenuItem.setChecked(true);
-                } else {
-                    mapTypeHybridMenuItem.setChecked(false);
-                }
-            }
-        };
-        orientationEventListener.canDetectOrientation();
-        orientationEventListener.enable();*/
+
     }
 
     @Override
@@ -138,20 +121,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         goKGMA.setData(Uri.parse("https://vk.com/lovekgma"));
         startActivity(goKGMA);
     }
-
-
-
-
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
-
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
