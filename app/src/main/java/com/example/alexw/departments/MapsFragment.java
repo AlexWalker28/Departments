@@ -1,13 +1,15 @@
 package com.example.alexw.departments;
 
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -36,7 +38,7 @@ import java.util.ArrayList;
 public class MapsFragment extends Fragment {
 
     private static final String TAG = "MapsFragment";
-    private GoogleMap mMap;
+    private static GoogleMap mMap;
     private Button cleanButton;
     private AutoCompleteTextView autoCompleteTextView;
     private ArrayAdapter<String> arrayAdapter;
@@ -166,7 +168,6 @@ public class MapsFragment extends Fragment {
                     }
                 };
                 autoCompleteTextView.addTextChangedListener(textWatcher);
-
             }
         });
         return v;
@@ -181,5 +182,7 @@ public class MapsFragment extends Fragment {
         }
     }
 
-
+    public static GoogleMap getMap() {
+        return mMap;
+    }
 }

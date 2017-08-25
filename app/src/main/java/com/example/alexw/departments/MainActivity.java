@@ -6,24 +6,26 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
-import android.support.v4.view.GravityCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SwitchCompat;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.view.View;
+
+import com.google.android.gms.maps.GoogleMap;
 
 import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = "MainActivity";
     private MenuItem reportMistakeMenuItem;
     private MenuItem goKGMAMenuItem;
     private DrawerLayout drawerLayout;
@@ -57,6 +59,23 @@ public class MainActivity extends AppCompatActivity {
 
         drawerToggle = setupDrawerToggle();
         drawerLayout.addDrawerListener(drawerToggle);
+
+        Menu menu = navigationView.getMenu();
+        MenuItem menuItem = menu.findItem(R.id.map_type_switch_menu_item);
+        SwitchCompat switchCompat = (SwitchCompat) MenuItemCompat.getActionView(menuItem).findViewById(R.id.switch_compat);
+        switchCompat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(v.isSelected()){
+                    MapsFragment.getMap().setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                    v.setActivated(false);
+                } else {
+                    MapsFragment.getMap().setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                    v.setActivated(true);
+                }
+                drawerLayout.closeDrawers();
+            }
+        });
 
     }
 
@@ -96,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.nav_second_fragment:
                 viewPager.setCurrentItem(1, true);
                 break;
+
         }
         drawerLayout.closeDrawers();
     }
