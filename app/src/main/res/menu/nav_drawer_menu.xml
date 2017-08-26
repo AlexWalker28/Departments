@@ -4,13 +4,23 @@
 
     <group>
         <item
-            android:id="@+id/nav_first_fragment"
+            android:id="@+id/first_tab_item"
             android:title="@string/tab_title_departments" />
         <item
-            android:id="@+id/nav_second_fragment"
+            android:id="@+id/second_tab_item"
             android:title="@string/tab_title_books" />
 
     </group>
+
+    <item android:title="@string/account">
+        <menu>
+            <group>
+                <item android:id="@+id/account_item"
+                    android:title="" />
+            </group>
+        </menu>
+    </item>
+
     <item android:title="@string/map_type">
         <menu>
             <group>

@@ -95,4 +95,8 @@
     <string name="tab_title_departments">Кафедры</string>
     <string name="tab_title_books">Книги</string>
     <string name="map_type">Map type</string>
+    <string name="account">Аккаунт</string>
+    <string name="sign_in">Войти</string>
+    <string name="sign_out">Выйти</string>
+    <string name="you_are_signed_out">Вы вышли из аккаунта</string>
 </resources>
