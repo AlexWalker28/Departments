@@ -14,10 +14,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SwitchCompat;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,7 +26,6 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 
@@ -44,10 +43,11 @@ public class MainActivity extends AppCompatActivity {
     private String [] tabTitlesArray;
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
-    private FirebaseUser user;
+    private FirebaseUser currentUser;
     private MenuItem accountMenuItem;
     private TextView userNameTextView;
     private TextView emailTextView;
+    private ImageView userPicImageView;
 
 
     @Override
@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         navigationView = (NavigationView)findViewById(R.id.navigation_view);
         userNameTextView = (TextView) navigationView.getHeaderView(0).findViewById(R.id.user_name_text_view);
         emailTextView = (TextView)navigationView.getHeaderView(0).findViewById(R.id.email_text_view);
+        userPicImageView = (ImageView)navigationView.getHeaderView(0).findViewById(R.id.navigation_drawer_user_pic);
         accountMenuItem = navigationView.getMenu().findItem(R.id.account_item);
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -87,18 +88,21 @@ public class MainActivity extends AppCompatActivity {
         authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                user = firebaseAuth.getCurrentUser();
-                if(user != null){
+                currentUser = firebaseAuth.getCurrentUser();
+                if(currentUser != null){
+                    //TODO: toast is showing up every time activity starts
                     Toast.makeText(getApplicationContext(), R.string.you_are_signed_in, Toast.LENGTH_LONG).show();
-                    if(user.getDisplayName() != null){
-                        userNameTextView.setText(user.getDisplayName());
-                    } else userNameTextView.setText(user.getPhoneNumber());
-                    emailTextView.setText(user.getEmail());
+                    if(currentUser.getDisplayName() != null){
+                        userNameTextView.setText(currentUser.getDisplayName());
+                    } else userNameTextView.setText(currentUser.getPhoneNumber());
+                    emailTextView.setText(currentUser.getEmail());
                     accountMenuItem.setTitle(R.string.sign_out);
+                    userPicImageView.setImageResource(R.mipmap.default_user_pic);
                 } else {
                     accountMenuItem.setTitle(R.string.sign_in);
                     userNameTextView.setText("");
                     emailTextView.setText("");
+                    userPicImageView.setImageResource(R.drawable.kgma);
                 }
             }
         };
@@ -135,6 +139,15 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+        userPicImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(currentUser != null){
+                    Intent intent = new Intent(MainActivity.this, UserProfileActivity.class);
+                    startActivity(intent);
+                } else signIn();
+            }
+        });
     }
 
     @Override
@@ -160,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
                 viewPager.setCurrentItem(1, true);
                 break;
             case R.id.account_item:
-                if(user == null){
+                if(currentUser == null){
                     signIn();
                 } else {
                     firebaseAuth.signOut();
