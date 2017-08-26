@@ -96,4 +96,5 @@
     <string name="sign_in">Войти</string>
     <string name="sign_out">Выйти</string>
     <string name="you_are_signed_out">Вы вышли из аккаунта</string>
+    <string name="you_are_signed_in">Вы вошли в аккаунт</string>
 </resources>

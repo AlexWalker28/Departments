@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
@@ -45,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener authStateListener;
     private FirebaseUser user;
     private MenuItem accountMenuItem;
+    private TextView userNameTextView;
+    private TextView emailTextView;
 
 
     @Override
@@ -55,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         tabTitlesArray = getResources().getStringArray(R.array.tab_titles);
         firebaseAuth = FirebaseAuth.getInstance();
 
+
         viewPager = (ViewPager)findViewById(R.id.viewpager);
         CustomFragmentPagerAdapter adapter = new CustomFragmentPagerAdapter(getSupportFragmentManager(), tabTitlesArray);
         TabLayout tabLayout = (TabLayout)findViewById(R.id.tab_layout);
@@ -63,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
 
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         navigationView = (NavigationView)findViewById(R.id.navigation_view);
+        userNameTextView = (TextView) navigationView.getHeaderView(0).findViewById(R.id.user_name_text_view);
+        emailTextView = (TextView)navigationView.getHeaderView(0).findViewById(R.id.email_text_view);
         accountMenuItem = navigationView.getMenu().findItem(R.id.account_item);
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -83,9 +89,16 @@ public class MainActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 user = firebaseAuth.getCurrentUser();
                 if(user != null){
+                    Toast.makeText(getApplicationContext(), R.string.you_are_signed_in, Toast.LENGTH_LONG).show();
+                    if(user.getDisplayName() != null){
+                        userNameTextView.setText(user.getDisplayName());
+                    } else userNameTextView.setText(user.getPhoneNumber());
+                    emailTextView.setText(user.getEmail());
                     accountMenuItem.setTitle(R.string.sign_out);
                 } else {
                     accountMenuItem.setTitle(R.string.sign_in);
+                    userNameTextView.setText("");
+                    emailTextView.setText("");
                 }
             }
         };
@@ -151,6 +164,7 @@ public class MainActivity extends AppCompatActivity {
                     signIn();
                 } else {
                     firebaseAuth.signOut();
+                    Toast.makeText(getApplicationContext(), R.string.you_are_signed_out, Toast.LENGTH_LONG).show();
                 }
         }
         drawerLayout.closeDrawers();
