@@ -44,19 +44,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MapsFragment"
-            android:configChanges="orientation"
-            android:label="@string/title_activity_maps">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.intent.action.SENDTO" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".UserProfileActivity"></activity>
+        <activity android:name=".MainActivity"
+            android:label="@string/title_activity_maps"/>
+        <activity android:name=".UserProfileActivity"
+            android:parentActivityName="com.example.alexw.departments.MainActivity"/>
     </application>
 
 </manifest>
