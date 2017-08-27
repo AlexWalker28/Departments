@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView userNameTextView;
     private TextView emailTextView;
     private ImageView userPicImageView;
+    private User user;
 
 
     @Override
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
         tabTitlesArray = getResources().getStringArray(R.array.tab_titles);
         firebaseAuth = FirebaseAuth.getInstance();
-
+        user = new User();
 
         viewPager = (ViewPager)findViewById(R.id.viewpager);
         CustomFragmentPagerAdapter adapter = new CustomFragmentPagerAdapter(getSupportFragmentManager(), tabTitlesArray);
@@ -92,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
                 if(currentUser != null){
                     //TODO: toast is showing up every time activity starts
                     Toast.makeText(getApplicationContext(), R.string.you_are_signed_in, Toast.LENGTH_LONG).show();
+                    user.setId(currentUser.getUid());
                     if(currentUser.getDisplayName() != null){
                         userNameTextView.setText(currentUser.getDisplayName());
                     } else userNameTextView.setText(currentUser.getPhoneNumber());
@@ -144,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(currentUser != null){
                     Intent intent = new Intent(MainActivity.this, UserProfileActivity.class);
+                    intent.putExtra(Constants.USER_ID, user.getId());
                     startActivity(intent);
                 } else signIn();
             }

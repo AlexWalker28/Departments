@@ -46,6 +46,7 @@ public class Constants {
     public static final LatLng DERMATOVEN    = new LatLng(42.862534, 74.595549);
     public static final LatLng CHILD_SURGERY = new LatLng(42.840642, 74.606942);
 
+    public static final String USER_ID = "user_id";
 }
 
 

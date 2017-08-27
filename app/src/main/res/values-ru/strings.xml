@@ -91,6 +91,8 @@
     </string-array>
     <string name="tab_title_departments">Кафедры</string>
     <string name="tab_title_books">Книги</string>
+    <!--================-->
+
     <string name="map_type">Тип карты</string>
     <string name="account">Аккаунт</string>
     <string name="sign_in">Войти</string>
@@ -102,4 +104,13 @@
     <string name="faculty">Факультет</string>
     <string name="year">Курс</string>
     <string name="group_number">Номер группы</string>
+
+    <string-array name="faculties">
+        <item>Лечебное дело</item>
+        <item>Педиатрия</item>
+        <item>Стоматология</item>
+        <item>Фармация</item>
+        <item>МПД</item>
+        <item>Сестринское дело"</item>
+    </string-array>
 </resources>
