@@ -24,6 +24,7 @@ public class UserProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
+        //TODO: better make it a fragment (read about it on android developers website)
 
         userPicImageView = (ImageView)findViewById(R.id.user_pic_image_view);
         userNameEditText = (EditText)findViewById(R.id.user_name_edit_text);
@@ -37,17 +38,4 @@ public class UserProfileActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.home: {
-                Log.v(TAG, "pressed");
-                NavUtils.navigateUpFromSameTask(this);
-                return true;
-            }
-            default : return super.onOptionsItemSelected(item);
-        }
-
-
-    }
 }
