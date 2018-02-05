@@ -106,8 +106,6 @@ public class UserProfileActivity extends AppCompatActivity {
                             "should be: " + user.getFaculty());
                     yearSpinner.setSelection(findYearIndex(user));
                     groupNumberEditText.setText(String.valueOf(user.getGroupNumber()));
-                } else {
-                    Toast.makeText(getApplicationContext(), R.string.something_is_wrong, Toast.LENGTH_SHORT).show();
                 }
 
             }
