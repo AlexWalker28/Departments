@@ -104,6 +104,7 @@
     <string name="faculty">Факультет</string>
     <string name="year">Курс</string>
     <string name="group_number">Номер группы</string>
+    <string name="something_is_wrong">Что-то пошло не так</string>
 
     <string-array name="faculties">
         <item>Лечебное дело</item>

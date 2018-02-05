@@ -11,8 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -98,13 +98,18 @@ public class UserProfileActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
-                userNameEditText.setText(user.getName());
-                facultySpinner.setSelection(findFacultyIndex(user));
-                Log.v(TAG, "selected item position: " + facultySpinner.getSelectedItemPosition() + "\n" +
-                        "method: " + findFacultyIndex(user)+ "\n" +
-                        "should be: " + user.getFaculty());
-                yearSpinner.setSelection(findYearIndex(user));
-                groupNumberEditText.setText(String.valueOf(user.getGroupNumber()));
+                if (user != null) {
+                    userNameEditText.setText(user.getName());
+                    facultySpinner.setSelection(findFacultyIndex(user));
+                    Log.v(TAG, "selected item position: " + facultySpinner.getSelectedItemPosition() + "\n" +
+                            "method: " + findFacultyIndex(user)+ "\n" +
+                            "should be: " + user.getFaculty());
+                    yearSpinner.setSelection(findYearIndex(user));
+                    groupNumberEditText.setText(String.valueOf(user.getGroupNumber()));
+                } else {
+                    Toast.makeText(getApplicationContext(), R.string.something_is_wrong, Toast.LENGTH_SHORT).show();
+                }
+
             }
 
             @Override
